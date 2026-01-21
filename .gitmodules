@@ -1,0 +1,6 @@
+[submodule "lib/M5Module-QRCode"]
+	path = lib/M5Module-QRCode
+	url = https://github.com/m5stack/M5Module-QRCode.git
+[submodule "lib/M5Module-HMI"]
+	path = lib/M5Module-HMI
+	url = https://github.com/m5stack/M5Module-HMI.git
