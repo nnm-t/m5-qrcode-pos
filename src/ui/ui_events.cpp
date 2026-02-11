@@ -5,9 +5,12 @@
 
 #include "ui/ui.h"
 
+#include "states/goods_state.h"
+
 void OnBarcodeButtonClicked(lv_event_t * e)
 {
 	// Your code here
+	GoodsState::OnQRCodeButtonClicked();
 }
 
 void OnAddButtonClicked(lv_event_t * e)

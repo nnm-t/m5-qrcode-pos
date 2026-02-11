@@ -1,21 +1,34 @@
 #pragma once
 
+#include <string>
+
 #include <Arduino.h>
+#include <lvgl.h>
+
+#include "ui/ui_goods_state.h"
 
 #include "i_state.h"
-#include "state_selector.h"
+#include "i_state_selector.h"
+#include "clock.h"
 
 class GoodsState : public IState
 {
-	StateSelector* const _state_selector;
+	static GoodsState* _instance;
+
+	IStateSelector* const _state_selector;
+	Clock& _clock;
 
 public:
-	GoodsState(StateSelector* const state_selector) : _state_selector(state_selector)
+	GoodsState(IStateSelector* const state_selector, Clock& clock) : _state_selector(state_selector), _clock(clock)
 	{
-
+		_instance = this;
 	}
 
 	void Begin() override;
 
-	void Update() override;
+	void Update(const uint32_t delay_ms) override;
+
+	void OnQRCodeScan(std::string& result);
+
+	static void OnQRCodeButtonClicked();
 };
