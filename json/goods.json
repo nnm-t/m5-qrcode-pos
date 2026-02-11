@@ -1,0 +1,16 @@
+{
+    "goods": [
+        {
+            "name": "失職同人作家 VS ハローワーク",
+            "image_path": "/vs_hello_work.bmp",
+            "price": 500,
+            "code": "2784862541014"
+        },
+        {
+            "name": "特定地方交通線 転換バスの旅 3",
+            "image_path": "/local_line_bus_3.bmp",
+            "price": 400,
+            "code": "9999999999999"
+        }
+    ]
+}

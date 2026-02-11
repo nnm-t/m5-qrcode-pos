@@ -10,6 +10,7 @@
 
 #include "ui/ui.h"
 
+#include "json_io.h"
 #include "clock.h"
 #include "qr.h"
 
@@ -21,9 +22,13 @@
 uint8_t draw_buf[DRAW_BUF_SIZE / 4];
 
 namespace {
+    static constexpr const uint8_t sd_cs_pin = 4;
     static constexpr const uint32_t delay_ms = 10;
 
     M5ModuleQRCode module_qrcode;
+
+    JsonIO json_io(&Serial);
+
     QR qrcode(module_qrcode);
     Clock clock(delay_ms);
 
@@ -71,6 +76,9 @@ void setup()
 {
     auto m5_config = M5.config();
     M5.begin(m5_config);
+    SD.begin(sd_cs_pin);
+
+    json_io.Read();
 
     lv_init();
     lv_tick_set_cb(my_tick);
