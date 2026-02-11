@@ -27,13 +27,13 @@ namespace {
 
     M5ModuleQRCode module_qrcode;
 
-    JsonIO json_io(&Serial);
-
     QR qrcode(module_qrcode);
     Clock clock(delay_ms);
 
     StateSelector state_selector(qrcode);
     GoodsState goods_state(&state_selector, clock);
+
+    JsonIO json_io(&Serial, goods_state);
 }
 
 static uint32_t my_tick()

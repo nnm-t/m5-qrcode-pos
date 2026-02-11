@@ -16,26 +16,31 @@ void OnBarcodeButtonClicked(lv_event_t * e)
 void OnAddButtonClicked(lv_event_t * e)
 {
 	// Your code here
+	GoodsState::OnPlusButtonClicked();
 }
 
 void OnRemoveButtonClicked(lv_event_t * e)
 {
 	// Your code here
+	GoodsState::OnMinusButtonClicked();
 }
 
 void OnTotalPriceLabelLongPressed(lv_event_t * e)
 {
 	// Your code here
+	GoodsState::OnResetButtonClicked();
 }
 
 void OnGoodsPrevButtonClicked(lv_event_t * e)
 {
 	// Your code here
+	GoodsState::OnGoodsPrevButtonClicked();
 }
 
 void OnGoodsNextButtonClicked(lv_event_t * e)
 {
 	// Your code here
+	GoodsState::OnGoodsNextButtonClicked();
 }
 
 void OnPaymentButtonClicked(lv_event_t * e)
