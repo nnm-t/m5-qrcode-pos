@@ -14,15 +14,21 @@ extern "C" {
 extern void ui_goods_state_screen_init(void);
 extern void ui_goods_state_screen_destroy(void);
 extern lv_obj_t * ui_goods_state;
-extern lv_obj_t * ui_header0;
-extern lv_obj_t * ui_footer0;
+extern lv_obj_t * ui_header_0;
+extern lv_obj_t * ui_footer_0;
+extern void ui_event_barcode_btn_0(lv_event_t * e);
 extern lv_obj_t * ui_barcode_btn_0;
+extern void ui_event_add_btn_0(lv_event_t * e);
 extern lv_obj_t * ui_add_btn_0;
+extern void ui_event_remove_btn_0(lv_event_t * e);
 extern lv_obj_t * ui_remove_btn_0;
+extern void ui_event_amount_btn_0(lv_event_t * e);
 extern lv_obj_t * ui_amount_btn_0;
+extern void ui_event_payment_btn_0(lv_event_t * e);
 extern lv_obj_t * ui_payment_btn_0;
+extern void ui_event_settings_btn_0(lv_event_t * e);
 extern lv_obj_t * ui_settings_btn_0;
-extern lv_obj_t * ui_good0;
+extern lv_obj_t * ui_good_0;
 extern lv_obj_t * ui_image0;
 extern lv_obj_t * ui_title_lbl_0;
 extern lv_obj_t * ui_label_0_0;
@@ -34,14 +40,18 @@ extern lv_obj_t * ui_label_0_3;
 extern lv_obj_t * ui_label_0_4;
 extern lv_obj_t * ui_total_number_lbl_0;
 extern lv_obj_t * ui_label_0_5;
+extern void ui_event_total_price_lbl_0(lv_event_t * e);
 extern lv_obj_t * ui_total_price_lbl_0;
 extern lv_obj_t * ui_label_0_6;
+extern void ui_event_goods_prev_0(lv_event_t * e);
 extern lv_obj_t * ui_goods_prev_0;
 extern lv_obj_t * ui_icon_prev_0;
+extern void ui_event_goods_next_0(lv_event_t * e);
 extern lv_obj_t * ui_goods_next_0;
 extern lv_obj_t * ui_icon_next_0;
 // CUSTOM VARIABLES
 extern lv_obj_t * uic_goods_state;
+extern lv_obj_t * uic_header_0;
 
 #ifdef __cplusplus
 } /*extern "C"*/

@@ -73,7 +73,7 @@ void loop()
     char time_str[9];
     snprintf(time_str, sizeof(time_str), "%02d:%02d:%02d", time.hours, time.minutes, time.seconds);
 
-    lv_obj_t* ui_time_0 = ui_comp_get_child(ui_header0, UI_COMP_HEADER_TIME_LBL);
+    lv_obj_t* ui_time_0 = ui_comp_get_child(ui_header_0, UI_COMP_HEADER_TIME_LBL);
     _ui_label_set_property(ui_time_0, _UI_LABEL_PROPERTY_TEXT, time_str);
 
     lv_timer_handler();

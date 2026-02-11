@@ -6,11 +6,11 @@
 #include "ui/ui.h"
 
 lv_obj_t * ui_amount_state = NULL;
-lv_obj_t * ui_header1 = NULL;
-lv_obj_t * ui_footer1 = NULL;
+lv_obj_t * ui_header_1 = NULL;
+lv_obj_t * ui_footer_1 = NULL;
 lv_obj_t * ui_payment_btn_1 = NULL;
 lv_obj_t * ui_back_btn_1 = NULL;
-lv_obj_t * ui_amount1 = NULL;
+lv_obj_t * ui_amount_1 = NULL;
 lv_obj_t * ui_label_1_0 = NULL;
 lv_obj_t * ui_label_1_1 = NULL;
 lv_obj_t * ui_amount_price_spn_1 = NULL;
@@ -23,6 +23,51 @@ lv_obj_t * ui_goods_list_title_lbl_1 = NULL;
 lv_obj_t * ui_goods_list_number_lbl_1 = NULL;
 lv_obj_t * ui_goods_list_price_lbl_1 = NULL;
 // event funtions
+void ui_event_payment_btn_1(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        OnPaymentButtonClicked(e);
+        _ui_screen_change(&ui_payment_state, LV_SCR_LOAD_ANIM_FADE_ON, 500, 0, &ui_payment_state_screen_init);
+    }
+}
+
+void ui_event_back_btn_1(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_FADE_OUT, 500, 0, &ui_goods_state_screen_init);
+    }
+}
+
+void ui_event_amount_price_spn_1(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_VALUE_CHANGED) {
+        OnSpinboxValueChanged(e);
+    }
+}
+
+void ui_event_amount_plus_btn_1(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        _ui_spinbox_step(ui_amount_price_spn_1, 1);
+    }
+}
+
+void ui_event_amount_minus_btn_1(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        _ui_spinbox_step(ui_amount_price_spn_1, -1);
+    }
+}
 
 // build funtions
 
@@ -31,28 +76,28 @@ void ui_amount_state_screen_init(void)
     ui_amount_state = lv_obj_create(NULL);
     lv_obj_remove_flag(ui_amount_state, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
-    ui_header1 = ui_header_create(ui_amount_state);
-    lv_obj_set_x(ui_header1, 0);
-    lv_obj_set_y(ui_header1, 0);
+    ui_header_1 = ui_header_create(ui_amount_state);
+    lv_obj_set_x(ui_header_1, 0);
+    lv_obj_set_y(ui_header_1, 0);
 
-    ui_footer1 = lv_obj_create(ui_amount_state);
-    lv_obj_set_width(ui_footer1, 320);
-    lv_obj_set_height(ui_footer1, 48);
-    lv_obj_set_x(ui_footer1, 0);
-    lv_obj_set_y(ui_footer1, 192);
-    lv_obj_remove_flag(ui_footer1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_radius(ui_footer1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    ui_object_set_themeable_style_property(ui_footer1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BG_COLOR,
+    ui_footer_1 = lv_obj_create(ui_amount_state);
+    lv_obj_set_width(ui_footer_1, 320);
+    lv_obj_set_height(ui_footer_1, 48);
+    lv_obj_set_x(ui_footer_1, 0);
+    lv_obj_set_y(ui_footer_1, 192);
+    lv_obj_remove_flag(ui_footer_1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_footer_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_object_set_themeable_style_property(ui_footer_1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BG_COLOR,
                                            _ui_theme_color_blue_darken_1);
-    ui_object_set_themeable_style_property(ui_footer1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BG_OPA,
+    ui_object_set_themeable_style_property(ui_footer_1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BG_OPA,
                                            _ui_theme_alpha_blue_darken_1);
-    lv_obj_set_style_border_width(ui_footer1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui_footer1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui_footer1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui_footer1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui_footer1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_width(ui_footer_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui_footer_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_footer_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui_footer_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui_footer_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_payment_btn_1 = lv_imagebutton_create(ui_footer1);
+    ui_payment_btn_1 = lv_imagebutton_create(ui_footer_1);
     lv_imagebutton_set_src(ui_payment_btn_1, LV_IMAGEBUTTON_STATE_RELEASED, NULL,
                            &ui_img_shopping_cart_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png, NULL);
     lv_obj_set_width(ui_payment_btn_1, 48);
@@ -66,7 +111,7 @@ void ui_amount_state_screen_init(void)
                                            _ui_theme_alpha_white);
     lv_obj_set_style_border_width(ui_payment_btn_1, 1, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_back_btn_1 = lv_imagebutton_create(ui_footer1);
+    ui_back_btn_1 = lv_imagebutton_create(ui_footer_1);
     lv_imagebutton_set_src(ui_back_btn_1, LV_IMAGEBUTTON_STATE_RELEASED, NULL,
                            &ui_img_arrow_back_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png, NULL);
     lv_obj_set_width(ui_back_btn_1, 48);
@@ -78,24 +123,24 @@ void ui_amount_state_screen_init(void)
                                            _ui_theme_alpha_white);
     lv_obj_set_style_border_width(ui_back_btn_1, 1, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_amount1 = lv_obj_create(ui_amount_state);
-    lv_obj_set_width(ui_amount1, 320);
-    lv_obj_set_height(ui_amount1, 168);
-    lv_obj_set_x(ui_amount1, 0);
-    lv_obj_set_y(ui_amount1, 24);
-    lv_obj_remove_flag(ui_amount1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_radius(ui_amount1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    ui_object_set_themeable_style_property(ui_amount1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BG_COLOR,
+    ui_amount_1 = lv_obj_create(ui_amount_state);
+    lv_obj_set_width(ui_amount_1, 320);
+    lv_obj_set_height(ui_amount_1, 168);
+    lv_obj_set_x(ui_amount_1, 0);
+    lv_obj_set_y(ui_amount_1, 24);
+    lv_obj_remove_flag(ui_amount_1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_amount_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_object_set_themeable_style_property(ui_amount_1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BG_COLOR,
                                            _ui_theme_color_transparent);
-    ui_object_set_themeable_style_property(ui_amount1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BG_OPA,
+    ui_object_set_themeable_style_property(ui_amount_1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BG_OPA,
                                            _ui_theme_alpha_transparent);
-    lv_obj_set_style_border_width(ui_amount1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui_amount1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui_amount1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui_amount1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui_amount1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_width(ui_amount_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui_amount_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_amount_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui_amount_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui_amount_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_label_1_0 = lv_label_create(ui_amount1);
+    ui_label_1_0 = lv_label_create(ui_amount_1);
     lv_obj_set_width(ui_label_1_0, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_label_1_0, LV_SIZE_CONTENT);    /// 43
     lv_obj_set_x(ui_label_1_0, 6);
@@ -107,7 +152,7 @@ void ui_amount_state_screen_init(void)
                                            _ui_theme_alpha_white);
     lv_obj_set_style_text_font(ui_label_1_0, &ui_font_noto_sans, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_label_1_1 = lv_label_create(ui_amount1);
+    ui_label_1_1 = lv_label_create(ui_amount_1);
     lv_obj_set_width(ui_label_1_1, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_label_1_1, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_label_1_1, 290);
@@ -119,7 +164,7 @@ void ui_amount_state_screen_init(void)
                                            _ui_theme_alpha_white);
     lv_obj_set_style_text_font(ui_label_1_1, &ui_font_noto_sans, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_amount_price_spn_1 = lv_spinbox_create(ui_amount1);
+    ui_amount_price_spn_1 = lv_spinbox_create(ui_amount_1);
     lv_obj_set_width(ui_amount_price_spn_1, 96);
     lv_obj_set_height(ui_amount_price_spn_1, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_amount_price_spn_1, 148);
@@ -139,7 +184,7 @@ void ui_amount_state_screen_init(void)
     ui_object_set_themeable_style_property(ui_amount_price_spn_1, LV_PART_CURSOR | LV_STATE_DEFAULT, LV_STYLE_TEXT_OPA,
                                            _ui_theme_alpha_white);
 
-    ui_amount_plus_btn_1 = lv_button_create(ui_amount1);
+    ui_amount_plus_btn_1 = lv_button_create(ui_amount_1);
     lv_obj_set_width(ui_amount_plus_btn_1, 36);
     lv_obj_set_height(ui_amount_plus_btn_1, 36);
     lv_obj_set_x(ui_amount_plus_btn_1, 248);
@@ -158,7 +203,7 @@ void ui_amount_state_screen_init(void)
                                            _ui_theme_alpha_white);
     lv_obj_set_style_text_font(ui_label_1_2, &ui_font_noto_sans, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_amount_minus_btn_1 = lv_button_create(ui_amount1);
+    ui_amount_minus_btn_1 = lv_button_create(ui_amount_1);
     lv_obj_set_width(ui_amount_minus_btn_1, 36);
     lv_obj_set_height(ui_amount_minus_btn_1, 36);
     lv_obj_set_x(ui_amount_minus_btn_1, 108);
@@ -177,7 +222,7 @@ void ui_amount_state_screen_init(void)
                                            _ui_theme_alpha_white);
     lv_obj_set_style_text_font(ui_label_1_3, &ui_font_noto_sans, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_goods_list_1 = lv_obj_create(ui_amount1);
+    ui_goods_list_1 = lv_obj_create(ui_amount_1);
     lv_obj_set_width(ui_goods_list_1, 272);
     lv_obj_set_height(ui_goods_list_1, 120);
     lv_obj_set_x(ui_goods_list_1, 24);
@@ -230,6 +275,12 @@ void ui_amount_state_screen_init(void)
     lv_obj_set_style_text_align(ui_goods_list_price_lbl_1, LV_TEXT_ALIGN_RIGHT, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_goods_list_price_lbl_1, &ui_font_noto_sans_16, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+    lv_obj_add_event_cb(ui_payment_btn_1, ui_event_payment_btn_1, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_back_btn_1, ui_event_back_btn_1, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_amount_price_spn_1, ui_event_amount_price_spn_1, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_amount_plus_btn_1, ui_event_amount_plus_btn_1, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_amount_minus_btn_1, ui_event_amount_minus_btn_1, LV_EVENT_ALL, NULL);
+
 }
 
 void ui_amount_state_screen_destroy(void)
@@ -238,11 +289,11 @@ void ui_amount_state_screen_destroy(void)
 
     // NULL screen variables
     ui_amount_state = NULL;
-    ui_header1 = NULL;
-    ui_footer1 = NULL;
+    ui_header_1 = NULL;
+    ui_footer_1 = NULL;
     ui_payment_btn_1 = NULL;
     ui_back_btn_1 = NULL;
-    ui_amount1 = NULL;
+    ui_amount_1 = NULL;
     ui_label_1_0 = NULL;
     ui_label_1_1 = NULL;
     ui_amount_price_spn_1 = NULL;

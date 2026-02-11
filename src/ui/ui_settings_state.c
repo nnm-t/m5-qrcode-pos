@@ -6,13 +6,11 @@
 #include "ui/ui.h"
 
 lv_obj_t * ui_settings_state = NULL;
-lv_obj_t * ui_header3 = NULL;
+lv_obj_t * ui_header_3 = NULL;
 lv_obj_t * ui_footer_3 = NULL;
 lv_obj_t * ui_back_btn_3 = NULL;
 lv_obj_t * ui_plus_btn_3 = NULL;
 lv_obj_t * ui_minus_btn_3 = NULL;
-lv_obj_t * ui_cursor_left_btn_3 = NULL;
-lv_obj_t * ui_cursor_right_btn_3 = NULL;
 lv_obj_t * ui_okay_btn_3 = NULL;
 lv_obj_t * ui_label_3_0 = NULL;
 lv_obj_t * ui_time_yyyy_lbl_3 = NULL;
@@ -26,6 +24,87 @@ lv_obj_t * ui_time_mm_lbl_3_1 = NULL;
 lv_obj_t * ui_label_3_4 = NULL;
 lv_obj_t * ui_blightness_sld_3 = NULL;
 // event funtions
+void ui_event_back_btn_3(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_FADE_OUT, 500, 0, &ui_goods_state_screen_init);
+    }
+}
+
+void ui_event_plus_btn_3(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        OnSettingsPlusButtonClicked(e);
+    }
+}
+
+void ui_event_minus_btn_3(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        OnSettingsMinusButtonClicked(e);
+    }
+}
+
+void ui_event_okay_btn_3(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_FADE_OUT, 500, 0, &ui_goods_state_screen_init);
+        OnSettingsOkayButtonClicked(e);
+    }
+}
+
+void ui_event_time_yyyy_lbl_3(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        OnYYYYLabelClicked(e);
+    }
+}
+
+void ui_event_time_mm_lbl_3_0(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        OnMM0LabelClicked(e);
+    }
+}
+
+void ui_event_time_dd_lbl_3(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        OnDDLabelClicked(e);
+    }
+}
+
+void ui_event_tim_hh_lbl_3(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        OnHHLabelClicked(e);
+    }
+}
+
+void ui_event_time_mm_lbl_3_1(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        OnMM1LabelClicked(e);
+    }
+}
 
 // build funtions
 
@@ -34,9 +113,9 @@ void ui_settings_state_screen_init(void)
     ui_settings_state = lv_obj_create(NULL);
     lv_obj_remove_flag(ui_settings_state, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
-    ui_header3 = ui_header_create(ui_settings_state);
-    lv_obj_set_x(ui_header3, 0);
-    lv_obj_set_y(ui_header3, 0);
+    ui_header_3 = ui_header_create(ui_settings_state);
+    lv_obj_set_x(ui_header_3, 0);
+    lv_obj_set_y(ui_header_3, 0);
 
     ui_footer_3 = lv_obj_create(ui_settings_state);
     lv_obj_set_width(ui_footer_3, 320);
@@ -94,34 +173,6 @@ void ui_settings_state_screen_init(void)
     ui_object_set_themeable_style_property(ui_minus_btn_3, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BORDER_OPA,
                                            _ui_theme_alpha_white);
     lv_obj_set_style_border_width(ui_minus_btn_3, 1, LV_PART_MAIN | LV_STATE_DEFAULT);
-
-    ui_cursor_left_btn_3 = lv_imagebutton_create(ui_footer_3);
-    lv_imagebutton_set_src(ui_cursor_left_btn_3, LV_IMAGEBUTTON_STATE_RELEASED, NULL,
-                           &ui_img_arrow_back_ios_new_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png, NULL);
-    lv_obj_set_width(ui_cursor_left_btn_3, 48);
-    lv_obj_set_height(ui_cursor_left_btn_3, 48);
-    lv_obj_set_x(ui_cursor_left_btn_3, 54);
-    lv_obj_set_y(ui_cursor_left_btn_3, 0);
-    lv_obj_set_align(ui_cursor_left_btn_3, LV_ALIGN_LEFT_MID);
-    ui_object_set_themeable_style_property(ui_cursor_left_btn_3, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BORDER_COLOR,
-                                           _ui_theme_color_white);
-    ui_object_set_themeable_style_property(ui_cursor_left_btn_3, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BORDER_OPA,
-                                           _ui_theme_alpha_white);
-    lv_obj_set_style_border_width(ui_cursor_left_btn_3, 1, LV_PART_MAIN | LV_STATE_DEFAULT);
-
-    ui_cursor_right_btn_3 = lv_imagebutton_create(ui_footer_3);
-    lv_imagebutton_set_src(ui_cursor_right_btn_3, LV_IMAGEBUTTON_STATE_RELEASED, NULL,
-                           &ui_img_arrow_forward_ios_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png, NULL);
-    lv_obj_set_width(ui_cursor_right_btn_3, 48);
-    lv_obj_set_height(ui_cursor_right_btn_3, 48);
-    lv_obj_set_x(ui_cursor_right_btn_3, 108);
-    lv_obj_set_y(ui_cursor_right_btn_3, 0);
-    lv_obj_set_align(ui_cursor_right_btn_3, LV_ALIGN_LEFT_MID);
-    ui_object_set_themeable_style_property(ui_cursor_right_btn_3, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BORDER_COLOR,
-                                           _ui_theme_color_white);
-    ui_object_set_themeable_style_property(ui_cursor_right_btn_3, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BORDER_OPA,
-                                           _ui_theme_alpha_white);
-    lv_obj_set_style_border_width(ui_cursor_right_btn_3, 1, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_okay_btn_3 = lv_imagebutton_create(ui_footer_3);
     lv_imagebutton_set_src(ui_okay_btn_3, LV_IMAGEBUTTON_STATE_RELEASED, NULL,
@@ -270,6 +321,15 @@ void ui_settings_state_screen_init(void)
     //Compensating for LVGL9.1 draw crash with bar/slider max value when top-padding is nonzero and right-padding is 0
     if(lv_obj_get_style_pad_top(ui_blightness_sld_3, LV_PART_MAIN) > 0) lv_obj_set_style_pad_right(ui_blightness_sld_3,
                                                                                                        lv_obj_get_style_pad_right(ui_blightness_sld_3, LV_PART_MAIN) + 1, LV_PART_MAIN);
+    lv_obj_add_event_cb(ui_back_btn_3, ui_event_back_btn_3, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_plus_btn_3, ui_event_plus_btn_3, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_minus_btn_3, ui_event_minus_btn_3, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_okay_btn_3, ui_event_okay_btn_3, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_time_yyyy_lbl_3, ui_event_time_yyyy_lbl_3, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_time_mm_lbl_3_0, ui_event_time_mm_lbl_3_0, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_time_dd_lbl_3, ui_event_time_dd_lbl_3, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_tim_hh_lbl_3, ui_event_tim_hh_lbl_3, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_time_mm_lbl_3_1, ui_event_time_mm_lbl_3_1, LV_EVENT_ALL, NULL);
 
 }
 
@@ -279,13 +339,11 @@ void ui_settings_state_screen_destroy(void)
 
     // NULL screen variables
     ui_settings_state = NULL;
-    ui_header3 = NULL;
+    ui_header_3 = NULL;
     ui_footer_3 = NULL;
     ui_back_btn_3 = NULL;
     ui_plus_btn_3 = NULL;
     ui_minus_btn_3 = NULL;
-    ui_cursor_left_btn_3 = NULL;
-    ui_cursor_right_btn_3 = NULL;
     ui_okay_btn_3 = NULL;
     ui_label_3_0 = NULL;
     ui_time_yyyy_lbl_3 = NULL;

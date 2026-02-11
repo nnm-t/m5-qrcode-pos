@@ -68,10 +68,6 @@ LV_IMG_DECLARE(
     ui_img_money_off_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png);    // assets/money_off_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png
 LV_IMG_DECLARE(
     ui_img_check_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png);    // assets/check_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png
-LV_IMG_DECLARE(
-    ui_img_arrow_back_ios_new_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png);    // assets/arrow_back_ios_new_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png
-LV_IMG_DECLARE(
-    ui_img_arrow_forward_ios_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png);    // assets/arrow_forward_ios_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png
 
 // FONTS
 LV_FONT_DECLARE(ui_font_dseg7);

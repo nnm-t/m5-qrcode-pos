@@ -14,12 +14,15 @@ extern "C" {
 extern void ui_payment_state_screen_init(void);
 extern void ui_payment_state_screen_destroy(void);
 extern lv_obj_t * ui_payment_state;
-extern lv_obj_t * ui_header2;
-extern lv_obj_t * ui_footer2;
+extern lv_obj_t * ui_header_2;
+extern lv_obj_t * ui_footer_2;
+extern void ui_event_back_btn_2(lv_event_t * e);
 extern lv_obj_t * ui_back_btn_2;
+extern void ui_event_free_btn_2(lv_event_t * e);
 extern lv_obj_t * ui_free_btn_2;
+extern void ui_event_okay_btn_2(lv_event_t * e);
 extern lv_obj_t * ui_okay_btn_2;
-extern lv_obj_t * ui_payment2;
+extern lv_obj_t * ui_payment_2;
 extern lv_obj_t * ui_goods_list_2;
 extern lv_obj_t * ui_goods_list_title_lbl_2;
 extern lv_obj_t * ui_goods_list_number_lbl_2;

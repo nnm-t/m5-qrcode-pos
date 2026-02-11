@@ -6,12 +6,12 @@
 #include "ui/ui.h"
 
 lv_obj_t * ui_payment_state = NULL;
-lv_obj_t * ui_header2 = NULL;
-lv_obj_t * ui_footer2 = NULL;
+lv_obj_t * ui_header_2 = NULL;
+lv_obj_t * ui_footer_2 = NULL;
 lv_obj_t * ui_back_btn_2 = NULL;
 lv_obj_t * ui_free_btn_2 = NULL;
 lv_obj_t * ui_okay_btn_2 = NULL;
-lv_obj_t * ui_payment2 = NULL;
+lv_obj_t * ui_payment_2 = NULL;
 lv_obj_t * ui_goods_list_2 = NULL;
 lv_obj_t * ui_goods_list_title_lbl_2 = NULL;
 lv_obj_t * ui_goods_list_number_lbl_2 = NULL;
@@ -20,6 +20,34 @@ lv_obj_t * ui_label_2_0 = NULL;
 lv_obj_t * ui_sum_price_lbl_2 = NULL;
 lv_obj_t * ui_label_2_1 = NULL;
 // event funtions
+void ui_event_back_btn_2(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_FADE_OUT, 500, 0, &ui_goods_state_screen_init);
+    }
+}
+
+void ui_event_free_btn_2(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        OnFreeButtonClicked(e);
+        _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_FADE_OUT, 500, 0, &ui_goods_state_screen_init);
+    }
+}
+
+void ui_event_okay_btn_2(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_FADE_OUT, 500, 0, &ui_goods_state_screen_init);
+        OnPaymentOkayButtonClicked(e);
+    }
+}
 
 // build funtions
 
@@ -28,28 +56,28 @@ void ui_payment_state_screen_init(void)
     ui_payment_state = lv_obj_create(NULL);
     lv_obj_remove_flag(ui_payment_state, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
-    ui_header2 = ui_header_create(ui_payment_state);
-    lv_obj_set_x(ui_header2, 0);
-    lv_obj_set_y(ui_header2, 0);
+    ui_header_2 = ui_header_create(ui_payment_state);
+    lv_obj_set_x(ui_header_2, 0);
+    lv_obj_set_y(ui_header_2, 0);
 
-    ui_footer2 = lv_obj_create(ui_payment_state);
-    lv_obj_set_width(ui_footer2, 320);
-    lv_obj_set_height(ui_footer2, 48);
-    lv_obj_set_x(ui_footer2, 0);
-    lv_obj_set_y(ui_footer2, 192);
-    lv_obj_remove_flag(ui_footer2, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_radius(ui_footer2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    ui_object_set_themeable_style_property(ui_footer2, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BG_COLOR,
+    ui_footer_2 = lv_obj_create(ui_payment_state);
+    lv_obj_set_width(ui_footer_2, 320);
+    lv_obj_set_height(ui_footer_2, 48);
+    lv_obj_set_x(ui_footer_2, 0);
+    lv_obj_set_y(ui_footer_2, 192);
+    lv_obj_remove_flag(ui_footer_2, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_footer_2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_object_set_themeable_style_property(ui_footer_2, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BG_COLOR,
                                            _ui_theme_color_blue_darken_1);
-    ui_object_set_themeable_style_property(ui_footer2, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BG_OPA,
+    ui_object_set_themeable_style_property(ui_footer_2, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BG_OPA,
                                            _ui_theme_alpha_blue_darken_1);
-    lv_obj_set_style_border_width(ui_footer2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui_footer2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui_footer2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui_footer2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui_footer2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_width(ui_footer_2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui_footer_2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_footer_2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui_footer_2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui_footer_2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_back_btn_2 = lv_imagebutton_create(ui_footer2);
+    ui_back_btn_2 = lv_imagebutton_create(ui_footer_2);
     lv_imagebutton_set_src(ui_back_btn_2, LV_IMAGEBUTTON_STATE_RELEASED, NULL,
                            &ui_img_arrow_back_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png, NULL);
     lv_obj_set_width(ui_back_btn_2, 48);
@@ -61,7 +89,7 @@ void ui_payment_state_screen_init(void)
                                            _ui_theme_alpha_white);
     lv_obj_set_style_border_width(ui_back_btn_2, 1, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_free_btn_2 = lv_imagebutton_create(ui_footer2);
+    ui_free_btn_2 = lv_imagebutton_create(ui_footer_2);
     lv_imagebutton_set_src(ui_free_btn_2, LV_IMAGEBUTTON_STATE_RELEASED, NULL,
                            &ui_img_money_off_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png, NULL);
     lv_obj_set_width(ui_free_btn_2, 48);
@@ -75,7 +103,7 @@ void ui_payment_state_screen_init(void)
                                            _ui_theme_alpha_white);
     lv_obj_set_style_border_width(ui_free_btn_2, 1, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_okay_btn_2 = lv_imagebutton_create(ui_footer2);
+    ui_okay_btn_2 = lv_imagebutton_create(ui_footer_2);
     lv_imagebutton_set_src(ui_okay_btn_2, LV_IMAGEBUTTON_STATE_RELEASED, NULL,
                            &ui_img_check_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png, NULL);
     lv_obj_set_width(ui_okay_btn_2, 48);
@@ -89,24 +117,24 @@ void ui_payment_state_screen_init(void)
                                            _ui_theme_alpha_white);
     lv_obj_set_style_border_width(ui_okay_btn_2, 1, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_payment2 = lv_obj_create(ui_payment_state);
-    lv_obj_set_width(ui_payment2, 320);
-    lv_obj_set_height(ui_payment2, 168);
-    lv_obj_set_x(ui_payment2, 0);
-    lv_obj_set_y(ui_payment2, 24);
-    lv_obj_remove_flag(ui_payment2, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_radius(ui_payment2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    ui_object_set_themeable_style_property(ui_payment2, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BG_COLOR,
+    ui_payment_2 = lv_obj_create(ui_payment_state);
+    lv_obj_set_width(ui_payment_2, 320);
+    lv_obj_set_height(ui_payment_2, 168);
+    lv_obj_set_x(ui_payment_2, 0);
+    lv_obj_set_y(ui_payment_2, 24);
+    lv_obj_remove_flag(ui_payment_2, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_payment_2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_object_set_themeable_style_property(ui_payment_2, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BG_COLOR,
                                            _ui_theme_color_transparent);
-    ui_object_set_themeable_style_property(ui_payment2, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BG_OPA,
+    ui_object_set_themeable_style_property(ui_payment_2, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_BG_OPA,
                                            _ui_theme_alpha_transparent);
-    lv_obj_set_style_border_width(ui_payment2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui_payment2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui_payment2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui_payment2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui_payment2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_width(ui_payment_2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui_payment_2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_payment_2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui_payment_2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui_payment_2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_goods_list_2 = lv_obj_create(ui_payment2);
+    ui_goods_list_2 = lv_obj_create(ui_payment_2);
     lv_obj_set_width(ui_goods_list_2, 272);
     lv_obj_set_height(ui_goods_list_2, 120);
     lv_obj_set_x(ui_goods_list_2, 24);
@@ -197,6 +225,10 @@ void ui_payment_state_screen_init(void)
     lv_obj_set_style_text_font(ui_label_2_1, &ui_font_noto_sans, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_transform_rotation(ui_label_2_1, 1800, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+    lv_obj_add_event_cb(ui_back_btn_2, ui_event_back_btn_2, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_free_btn_2, ui_event_free_btn_2, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_okay_btn_2, ui_event_okay_btn_2, LV_EVENT_ALL, NULL);
+
 }
 
 void ui_payment_state_screen_destroy(void)
@@ -205,12 +237,12 @@ void ui_payment_state_screen_destroy(void)
 
     // NULL screen variables
     ui_payment_state = NULL;
-    ui_header2 = NULL;
-    ui_footer2 = NULL;
+    ui_header_2 = NULL;
+    ui_footer_2 = NULL;
     ui_back_btn_2 = NULL;
     ui_free_btn_2 = NULL;
     ui_okay_btn_2 = NULL;
-    ui_payment2 = NULL;
+    ui_payment_2 = NULL;
     ui_goods_list_2 = NULL;
     ui_goods_list_title_lbl_2 = NULL;
     ui_goods_list_number_lbl_2 = NULL;

@@ -10,6 +10,25 @@
 extern "C" {
 #endif
 
+void OnBarcodeButtonClicked(lv_event_t * e);
+void OnAddButtonClicked(lv_event_t * e);
+void OnRemoveButtonClicked(lv_event_t * e);
+void OnTotalPriceLabelLongPressed(lv_event_t * e);
+void OnGoodsPrevButtonClicked(lv_event_t * e);
+void OnGoodsNextButtonClicked(lv_event_t * e);
+void OnPaymentButtonClicked(lv_event_t * e);
+void OnSpinboxValueChanged(lv_event_t * e);
+void OnFreeButtonClicked(lv_event_t * e);
+void OnPaymentOkayButtonClicked(lv_event_t * e);
+void OnSettingsPlusButtonClicked(lv_event_t * e);
+void OnSettingsMinusButtonClicked(lv_event_t * e);
+void OnSettingsOkayButtonClicked(lv_event_t * e);
+void OnYYYYLabelClicked(lv_event_t * e);
+void OnMM0LabelClicked(lv_event_t * e);
+void OnDDLabelClicked(lv_event_t * e);
+void OnHHLabelClicked(lv_event_t * e);
+void OnMM1LabelClicked(lv_event_t * e);
+
 #ifdef __cplusplus
 } /*extern "C"*/
 #endif
