@@ -21,7 +21,7 @@ public:
 
     }
 
-    Good(JsonObject& obj) : _name(obj["name"].as<std::string>()), _image_path(obj["image_path"].as<std::string>()), _code(obj["code"].as<std::string>()), _unit_price(obj["price"].as<uint32_t>())
+    Good(JsonObject& obj) : _name(obj["name"].as<std::string>()), _image_path( "A:" + obj["image_path"].as<std::string>()), _code(obj["code"].as<std::string>()), _unit_price(obj["price"].as<uint32_t>())
     {
 
     }
@@ -29,6 +29,8 @@ public:
     const std::string& GetName() const;
 
     const std::string& GetCode() const;
+
+    const std::string& GetImagePath() const;
 
     const uint32_t GetUnitPrice() const;
 

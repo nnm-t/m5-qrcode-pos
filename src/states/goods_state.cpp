@@ -24,6 +24,7 @@ void GoodsState::Draw()
     _ui_label_set_property(ui_title_lbl_0, _UI_LABEL_PROPERTY_TEXT, _current_good->GetName().c_str());
 
     // 画像
+    lv_img_set_src(ui_image0, _current_good->GetImagePath().c_str());
 
     // 単価
     char unit_price_str[5];
@@ -95,7 +96,16 @@ void GoodsState::Reset()
 
 void GoodsState::OnQRCodeScan(std::string& result)
 {
+    std::unordered_map<std::string, size_t>::iterator iterator = _goods_hash.find(result);
 
+    if (iterator == _goods_hash.end())
+    {
+        return;
+    }
+
+    _current_good = _goods.begin() + iterator->second;
+
+    Plus();
 }
 
 void GoodsState::Deserialize(JsonArray& json_goods)
@@ -103,10 +113,12 @@ void GoodsState::Deserialize(JsonArray& json_goods)
     _goods.clear();
     _goods.reserve(json_goods.size());
 
-    for (JsonVariant good : json_goods)
+    for (size_t i = 0; i < json_goods.size(); i++)
     {
-        JsonObject obj = good.as<JsonObject>();
+        JsonObject obj = json_goods[i].as<JsonObject>();
+
         _goods.push_back(Good(obj));
+        _goods_hash[_goods[i].GetCode()] = i;
     }
 
     _current_good = _goods.begin();

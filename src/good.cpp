@@ -10,6 +10,11 @@ const std::string& Good::GetCode() const
     return _code;
 }
 
+const std::string& Good::GetImagePath() const
+{
+    return _image_path;
+}
+
 const uint32_t Good::GetUnitPrice() const
 {
     return _unit_price;
