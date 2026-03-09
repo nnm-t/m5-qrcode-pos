@@ -2,6 +2,7 @@
 
 #include <M5Unified.h>
 #include <M5ModuleQRCode.h>
+#include <M5ModuleHMI.h>
 
 #include <lvgl.h>
 
@@ -19,6 +20,7 @@
 #include "json_io.h"
 #include "clock.h"
 #include "qr.h"
+#include "hmi.h"
 
 #define TFT_HOR_RES                     320
 #define TFT_VER_RES                     240
@@ -32,11 +34,13 @@ namespace {
     static constexpr const uint32_t delay_ms = 10;
 
     M5ModuleQRCode module_qrcode;
+    M5ModuleHMI module_hmi;
 
     QR qrcode(module_qrcode);
+    HMI hmi(module_hmi);
     Clock clock(delay_ms);
 
-    StateSelector state_selector(qrcode);
+    StateSelector state_selector(qrcode, hmi);
     GoodsState goods_state(&state_selector, clock);
 
     JsonIO json_io(&Serial, goods_state);

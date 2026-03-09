@@ -50,10 +50,22 @@ public:
 	void Minus();
 
 	void Reset();
+	
+	void ResetAll();
 
 	void OnQRCodeScan(std::string& result);
 
 	void Deserialize(JsonArray& json_goods);
+
+	void OnHMIEncoderIncrement() override;
+
+	void OnHMIEncoderDecrement() override;
+
+	void OnHMIButtonSPressed() override;
+
+	void OnHMIButton1Pressed() override;
+
+	void OnHMIButton2Pressed() override;
 
 	static void OnQRCodeButtonClicked();
 

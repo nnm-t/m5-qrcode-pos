@@ -2,6 +2,14 @@
 
 void StateSelector::Begin()
 {
+    _hmi.on_button_s_pressed = [&]{ OnHMIButtonSPressed(); };
+    _hmi.on_button_1_pressed = [&]{ OnHMIButton1Pressed(); };
+    _hmi.on_button_2_pressed = [&]{ OnHMIButton2Pressed(); };
+    _hmi.on_encoder_increment = [&]{ OnHMIEncoderIncrement(); };
+    _hmi.on_encoder_decrement = [&]{ OnHMIEncoderDecrement(); };
+
+    _hmi.Begin();
+
     _qr.Begin([&](std::string& result){ OnQRCodeScan(result); });
 
     _current_state = goods_state;
@@ -21,6 +29,7 @@ void StateSelector::Update(const uint32_t delay_ms)
         return;
     }
 
+    _hmi.Update();
     _qr.Update();
 
     _current_state->Update(delay_ms);
@@ -44,4 +53,54 @@ void StateSelector::OnQRCodeScan(std::string& result)
     }
 
     goods_state->OnQRCodeScan(result);
+}
+
+void StateSelector::OnHMIButtonSPressed()
+{
+    if (_current_state == nullptr)
+    {
+        return;
+    }
+
+    _current_state->OnHMIButtonSPressed();
+}
+
+void StateSelector::OnHMIButton1Pressed()
+{
+    if (_current_state == nullptr)
+    {
+        return;
+    }
+
+    _current_state->OnHMIButton1Pressed();
+}
+
+void StateSelector::OnHMIButton2Pressed()
+{
+    if (_current_state == nullptr)
+    {
+        return;
+    }
+
+    _current_state->OnHMIButton2Pressed();
+}
+
+void StateSelector::OnHMIEncoderIncrement()
+{
+    if (_current_state == nullptr)
+    {
+        return;
+    }
+
+    _current_state->OnHMIEncoderIncrement();
+}
+
+void StateSelector::OnHMIEncoderDecrement()
+{
+    if (_current_state == nullptr)
+    {
+        return;
+    }
+
+    _current_state->OnHMIEncoderDecrement();
 }

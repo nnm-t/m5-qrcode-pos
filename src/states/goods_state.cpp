@@ -91,6 +91,17 @@ void GoodsState::Minus()
 void GoodsState::Reset()
 {
     _current_good->ResetNumber();
+
+    Draw();
+}
+
+void GoodsState::ResetAll()
+{
+    for (Good& good : _goods)
+    {
+        good.ResetNumber();
+    }
+
     Draw();
 }
 
@@ -124,6 +135,30 @@ void GoodsState::Deserialize(JsonArray& json_goods)
     _current_good = _goods.begin();
 }
 
+void GoodsState::OnHMIEncoderIncrement()
+{
+    Next();
+}
+
+void GoodsState::OnHMIEncoderDecrement()
+{
+    Prev();
+}
+
+void GoodsState::OnHMIButtonSPressed()
+{
+    ResetAll();
+}
+
+void GoodsState::OnHMIButton1Pressed()
+{
+    Plus();
+}
+
+void GoodsState::OnHMIButton2Pressed()
+{
+    Minus();
+}
 
 void GoodsState::OnQRCodeButtonClicked()
 {
