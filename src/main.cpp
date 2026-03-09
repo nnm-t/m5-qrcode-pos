@@ -5,6 +5,12 @@
 
 #include <lvgl.h>
 
+#if LV_USE_FS_ARDUINO_SD == 0
+
+#include "lv_fs_sd_memfs.h"
+
+#endif
+
 #include "states/state_selector.h"
 #include "states/goods_state.h"
 
@@ -90,6 +96,10 @@ void setup()
     lv_indev_t* indev = lv_indev_create();
     lv_indev_set_type(indev, LV_INDEV_TYPE_POINTER);
     lv_indev_set_read_cb(indev, my_touchpad_read);
+
+#if LV_USE_FS_ARDUINO_SD == 0
+    lv_fs_arduino_sd_init();
+#endif
 
     ui_init();
 
