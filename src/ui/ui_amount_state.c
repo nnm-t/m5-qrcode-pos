@@ -28,7 +28,7 @@ void ui_event_payment_btn_1(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
-        OnPaymentButtonClicked(e);
+        OnAmountPaymentButtonClicked(e);
         _ui_screen_change(&ui_payment_state, LV_SCR_LOAD_ANIM_FADE_ON, 500, 0, &ui_payment_state_screen_init);
     }
 }
@@ -38,6 +38,7 @@ void ui_event_back_btn_1(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
+        OnAmountBackButtonClicked(e);
         _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_FADE_OUT, 500, 0, &ui_goods_state_screen_init);
     }
 }
@@ -47,7 +48,7 @@ void ui_event_amount_price_spn_1(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_VALUE_CHANGED) {
-        OnSpinboxValueChanged(e);
+        OnAmountSpinboxValueChanged(e);
     }
 }
 

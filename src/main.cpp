@@ -14,6 +14,7 @@
 
 #include "states/state_selector.h"
 #include "states/goods_state.h"
+#include "states/payment_state.h"
 
 #include "ui/ui.h"
 
@@ -42,6 +43,7 @@ namespace {
 
     StateSelector state_selector(qrcode, hmi);
     GoodsState goods_state(&state_selector, clock);
+    PaymentState payment_state(&state_selector, goods_state, clock);
 
     JsonIO json_io(&Serial, goods_state);
 }
@@ -108,6 +110,7 @@ void setup()
     ui_init();
 
     state_selector.goods_state = &goods_state;
+    state_selector.payment_state = &payment_state;
     state_selector.Begin();
 }
 

@@ -1,5 +1,7 @@
 #include "states/state_selector.h"
 
+StateSelector* StateSelector::_instance;
+
 void StateSelector::Begin()
 {
     _hmi.on_button_s_pressed = [&]{ OnHMIButtonSPressed(); };
@@ -103,4 +105,28 @@ void StateSelector::OnHMIEncoderDecrement()
     }
 
     _current_state->OnHMIEncoderDecrement();
+}
+
+void StateSelector::ToGoodsState()
+{
+    _instance->_current_state = _instance->goods_state;
+
+    if (_instance->_current_state == nullptr)
+    {
+        return;
+    }
+
+    _instance->_current_state->Begin();
+}
+
+void StateSelector::ToPaymentState()
+{
+    _instance->_current_state = _instance->payment_state;
+
+    if (_instance->_current_state == nullptr)
+    {
+        return;
+    }
+
+    _instance->_current_state->Begin();
 }

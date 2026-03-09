@@ -53,6 +53,14 @@ public:
 	
 	void ResetAll();
 
+	const int32_t GetSumPrice();
+
+	const std::string GetGoodsNames();
+
+	const std::string GetGoodsNumbers();
+
+	const std::string GetGoodsPrices();
+
 	void OnQRCodeScan(std::string& result);
 
 	void Deserialize(JsonArray& json_goods);

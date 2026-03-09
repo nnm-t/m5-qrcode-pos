@@ -5,7 +5,9 @@
 
 #include "ui/ui.h"
 
+#include "states/state_selector.h"
 #include "states/goods_state.h"
+#include "states/payment_state.h"
 
 void OnBarcodeButtonClicked(lv_event_t * e)
 {
@@ -43,24 +45,63 @@ void OnGoodsNextButtonClicked(lv_event_t * e)
 	GoodsState::OnGoodsNextButtonClicked();
 }
 
-void OnPaymentButtonClicked(lv_event_t * e)
+void OnGoodsAmountButtonClicked(lv_event_t * e)
 {
 	// Your code here
 }
 
-void OnSpinboxValueChanged(lv_event_t * e)
+void OnGoodsPaymentButtonClicked(lv_event_t * e)
+{
+	// Your code here
+	StateSelector::ToPaymentState();
+}
+
+void OnAmountBackButtonClicked(lv_event_t * e)
+{
+	// Your code here
+	StateSelector::ToGoodsState();
+}
+
+void OnAmountPaymentButtonClicked(lv_event_t * e)
+{
+	// Your code here
+	StateSelector::ToGoodsState();
+}
+
+void OnGoodsSettingsButtonClicked(lv_event_t * e)
 {
 	// Your code here
 }
 
-void OnFreeButtonClicked(lv_event_t * e)
+void OnAmountSpinboxValueChanged(lv_event_t * e)
 {
 	// Your code here
+}
+
+void OnPaymentBackButtonClicked(lv_event_t * e)
+{
+	// Your code here
+	StateSelector::ToGoodsState();
+}
+
+void OnPaymentFreeButtonClicked(lv_event_t * e)
+{
+	// Your code here
+	PaymentState::OnFreeButtonClicked();
+	StateSelector::ToGoodsState();
 }
 
 void OnPaymentOkayButtonClicked(lv_event_t * e)
 {
 	// Your code here
+	PaymentState::OnOkayButtonClicked();
+	StateSelector::ToGoodsState();
+}
+
+void OnSettingsBackButtonClicked(lv_event_t * e)
+{
+	// Your code here
+	StateSelector::ToGoodsState();
 }
 
 void OnSettingsPlusButtonClicked(lv_event_t * e)
@@ -76,6 +117,7 @@ void OnSettingsMinusButtonClicked(lv_event_t * e)
 void OnSettingsOkayButtonClicked(lv_event_t * e)
 {
 	// Your code here
+	StateSelector::ToGoodsState();
 }
 
 void OnYYYYLabelClicked(lv_event_t * e)

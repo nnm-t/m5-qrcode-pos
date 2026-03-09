@@ -29,6 +29,7 @@ void ui_event_back_btn_3(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
+        OnSettingsBackButtonClicked(e);
         _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_FADE_OUT, 500, 0, &ui_goods_state_screen_init);
     }
 }

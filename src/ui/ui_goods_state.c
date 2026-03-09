@@ -67,6 +67,7 @@ void ui_event_amount_btn_0(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
+        OnGoodsAmountButtonClicked(e);
         _ui_screen_change(&ui_amount_state, LV_SCR_LOAD_ANIM_FADE_ON, 500, 0, &ui_amount_state_screen_init);
     }
 }
@@ -76,6 +77,7 @@ void ui_event_payment_btn_0(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
+        OnGoodsPaymentButtonClicked(e);
         _ui_screen_change(&ui_payment_state, LV_SCR_LOAD_ANIM_FADE_ON, 500, 0, &ui_payment_state_screen_init);
     }
 }
@@ -85,6 +87,7 @@ void ui_event_settings_btn_0(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
+        OnGoodsSettingsButtonClicked(e);
         _ui_screen_change(&ui_settings_state, LV_SCR_LOAD_ANIM_FADE_ON, 500, 0, &ui_settings_state_screen_init);
     }
 }

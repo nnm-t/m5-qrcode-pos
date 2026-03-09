@@ -7,11 +7,14 @@
 #include "i_state.h"
 #include "i_state_selector.h"
 #include "goods_state.h"
+#include "payment_state.h"
 #include "qr.h"
 #include "hmi.h"
 
 class StateSelector : public IStateSelector
 {
+	static StateSelector* _instance;
+
     QR& _qr;
 	HMI& _hmi;
 	IState* _current_state = nullptr;
@@ -30,10 +33,11 @@ class StateSelector : public IStateSelector
 
 public:
 	GoodsState* goods_state = nullptr;
+	PaymentState* payment_state = nullptr;
 
 	StateSelector(QR& qr, HMI& hmi) : _qr(qr), _hmi(hmi)
 	{
-
+		_instance = this;
 	}
 
 	void Begin() override;
@@ -41,4 +45,8 @@ public:
 	void Update(const uint32_t delay_ms) override;
 
     void EnableQRCodeReader() override;
+
+	static void ToGoodsState();
+
+	static void ToPaymentState();
 };

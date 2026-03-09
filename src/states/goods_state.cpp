@@ -24,7 +24,7 @@ void GoodsState::Draw()
     _ui_label_set_property(ui_title_lbl_0, _UI_LABEL_PROPERTY_TEXT, _current_good->GetName().c_str());
 
     // 画像
-    lv_img_set_src(ui_image0, _current_good->GetImagePath().c_str());
+    lv_image_set_src(ui_image0, _current_good->GetImagePath().c_str());
 
     // 単価
     char unit_price_str[5];
@@ -103,6 +103,89 @@ void GoodsState::ResetAll()
     }
 
     Draw();
+}
+
+const int32_t GoodsState::GetSumPrice()
+{
+    int32_t sum_price = 0;
+
+    for (Good& good : _goods)
+    {
+        sum_price += good.GetAmountPrice();
+    }
+
+    return sum_price;
+}
+
+const std::string GoodsState::GetGoodsNames()
+{
+    std::string str;
+
+    for (size_t i = 0; i < _goods.size(); i++)
+    {
+        if (_goods[i].GetNumber() == 0)
+        {
+            continue;
+        }
+
+        str += _goods[i].GetName();
+
+        if (i < _goods.size() - 1)
+        {
+            str += "\n";
+        }
+    }
+
+    return str;
+}
+
+const std::string GoodsState::GetGoodsNumbers()
+{
+    std::string str;
+
+    for (size_t i = 0; i < _goods.size(); i++)
+    {
+        const int32_t number = _goods[i].GetNumber();
+        if (number == 0)
+        {
+            continue;
+        }
+
+        char num[5];
+        snprintf(num, strlen(num), "x%1d", number);
+        str += num;
+
+        if (i < _goods.size() - 1)
+        {
+            str += "\n";
+        }
+    }
+
+    return str;
+}
+
+const std::string GoodsState::GetGoodsPrices()
+{
+    std::string str;
+
+    for (size_t i = 0; i < _goods.size(); i++)
+    {
+        if (_goods[i].GetNumber() == 0)
+        {
+            continue;
+        }
+
+        char price[8];
+        snprintf(price, strlen(price), "%d円", _goods[i].GetAmountPrice());
+        str += price;
+
+        if (i < _goods.size() - 1)
+        {
+            str += "\n";
+        }
+    }
+
+    return str;
 }
 
 void GoodsState::OnQRCodeScan(std::string& result)
