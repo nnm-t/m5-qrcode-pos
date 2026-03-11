@@ -1,0 +1,73 @@
+#pragma once
+
+#include <Arduino.h>
+#include <M5Unified.h>
+#include <lvgl.h>
+
+#include "ui/ui_settings_state.h"
+
+#include "i_state.h"
+#include "i_state_selector.h"
+#include "clock.h"
+
+enum class RTCSettings : uint8_t
+{
+    Years = 0x01,
+    Months = 0x02,
+    Days = 0x04,
+    Hours = 0x11,
+    Minutes = 0x12
+};
+
+class SettingsState : public IState
+{
+    static SettingsState* _instance;
+
+    IStateSelector* const _state_selector;
+    Clock& _clock;
+
+    RTCSettings _rtc_current = RTCSettings::Years;
+    m5::rtc_datetime_t _rtc_datetime = m5::rtc_datetime_t();
+
+    void SetRTCSettingsTheme(lv_obj_t* const object, const RTCSettings rtc_settings);
+
+    void DrawRTCSettings();
+
+    void IncrementRTCSettings();
+
+    void DecrementRTCSettings();
+
+    void ApplySettings();
+
+public:
+    SettingsState(IStateSelector* const state_selector, Clock& clock) : _state_selector(state_selector), _clock(clock)
+    {
+        _instance = this;
+    }
+
+    void Begin() override;
+
+    void Update(const uint32_t delay_ms) override;
+
+    void ChangeRTCCurrent(const RTCSettings rtc_settings);
+
+    void OnHMIEncoderIncrement() override;
+
+    void OnHMIEncoderDecrement() override;
+
+    static void OnPlusButtonClicked();
+
+    static void OnMinusButtonClicked();
+
+    static void OnOkayButtonClicked();
+
+    static void OnYYYYLabelClicked();
+
+    static void OnMM0LabelClicked();
+
+    static void OnDDLabelClicked();
+
+    static void OnHHLabelClicked();
+
+    static void OnMM1LabelClicked();
+};

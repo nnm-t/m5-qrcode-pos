@@ -119,9 +119,33 @@ void StateSelector::ToGoodsState()
     _instance->_current_state->Begin();
 }
 
+void StateSelector::ToAmountState()
+{
+    _instance->_current_state = _instance->amount_state;
+
+    if (_instance->_current_state == nullptr)
+    {
+        return;
+    }
+
+    _instance->_current_state->Begin();
+}
+
 void StateSelector::ToPaymentState()
 {
     _instance->_current_state = _instance->payment_state;
+
+    if (_instance->_current_state == nullptr)
+    {
+        return;
+    }
+
+    _instance->_current_state->Begin();
+}
+
+void StateSelector::ToSettingsState()
+{
+    _instance->_current_state = _instance->settings_state;
 
     if (_instance->_current_state == nullptr)
     {

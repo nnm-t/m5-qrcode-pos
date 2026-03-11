@@ -7,7 +7,9 @@
 #include "i_state.h"
 #include "i_state_selector.h"
 #include "goods_state.h"
+#include "amount_state.h"
 #include "payment_state.h"
+#include "settings_state.h"
 #include "qr.h"
 #include "hmi.h"
 
@@ -33,7 +35,9 @@ class StateSelector : public IStateSelector
 
 public:
 	GoodsState* goods_state = nullptr;
+	AmountState* amount_state = nullptr;
 	PaymentState* payment_state = nullptr;
+	SettingsState* settings_state = nullptr;
 
 	StateSelector(QR& qr, HMI& hmi) : _qr(qr), _hmi(hmi)
 	{
@@ -48,5 +52,9 @@ public:
 
 	static void ToGoodsState();
 
+	static void ToAmountState();
+
 	static void ToPaymentState();
+
+	static void ToSettingsState();
 };
