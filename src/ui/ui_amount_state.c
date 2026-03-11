@@ -173,6 +173,7 @@ void ui_amount_state_screen_init(void)
     lv_spinbox_set_digit_format(ui_amount_price_spn_1, 4, 0);
     lv_spinbox_set_range(ui_amount_price_spn_1, -9900, 9900);
     lv_spinbox_set_cursor_pos(ui_amount_price_spn_1, 3 - 1);
+    lv_spinbox_set_step(ui_amount_price_spn_1, 100);
     ui_object_set_themeable_style_property(ui_amount_price_spn_1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,
                                            _ui_theme_color_white);
     ui_object_set_themeable_style_property(ui_amount_price_spn_1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_OPA,

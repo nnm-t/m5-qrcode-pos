@@ -4,6 +4,8 @@ AmountState* AmountState::_instance;
 
 void AmountState::Begin()
 {
+    GetAmountValue();
+
     // 金額入力 一覧表示
 }
 
@@ -13,14 +15,14 @@ void AmountState::Update(const uint32_t delay_ms)
     _clock.Update(ui_time_0, delay_ms);
 }
 
-void AmountState::OnHMIButtonSPressed()
+void AmountState::GetAmountValue()
 {
-    // SpinBox 桁変更
+    _amount_value = lv_spinbox_get_value(ui_amount_price_spn_1);
 }
 
 void AmountState::OnHMIButton1Pressed()
 {
-    //  PaymentState へ移動
+    // PaymentState へ移動
 }
 
 void AmountState::OnHMIButton2Pressed()
@@ -31,14 +33,20 @@ void AmountState::OnHMIButton2Pressed()
 void AmountState::OnHMIEncoderIncrement()
 {
     // 金額入力 Plus
+    const int32_t step = lv_spinbox_get_step(ui_amount_price_spn_1);
+    _amount_value = _amount_value + step > 9900 ? 9900 : _amount_value + step;
+    lv_spinbox_set_value(ui_amount_price_spn_1, _amount_value);
 }
 
 void AmountState::OnHMIEncoderDecrement()
 {
     // 金額入力 Minus
+    const int32_t step = lv_spinbox_get_step(ui_amount_price_spn_1);
+    _amount_value = _amount_value - step < -9900 ? -9900 : _amount_value - step;
+    lv_spinbox_set_value(ui_amount_price_spn_1, _amount_value);
 }
 
 void AmountState::OnSpinBoxValueChanged()
 {
-
+    _instance->GetAmountValue();
 }

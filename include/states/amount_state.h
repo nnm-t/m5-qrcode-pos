@@ -16,6 +16,10 @@ class AmountState : public IState
     IStateSelector* const _state_selector;
     Clock& _clock;
 
+    int32_t _amount_value = 0;
+
+    void GetAmountValue();
+
 public:
     AmountState(IStateSelector* const state_selector, Clock& clock) : _state_selector(state_selector), _clock(clock)
     {
@@ -25,8 +29,6 @@ public:
     void Begin() override;
 
     void Update(const uint32_t delay_ms) override;
-
-    void OnHMIButtonSPressed() override;
 
     void OnHMIButton1Pressed() override;
 
