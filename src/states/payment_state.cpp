@@ -6,7 +6,7 @@ void PaymentState::Begin()
 {
     // 合計価格
     char sum_price[6];
-    snprintf(sum_price, strlen(sum_price), "%d", _goods_state.GetSumPrice());
+    snprintf(sum_price, sizeof(sum_price), "%d", _goods_state.GetSumPrice());
     _ui_label_set_property(ui_sum_price_lbl_2, _UI_LABEL_PROPERTY_TEXT, sum_price);
 
     // タイトル

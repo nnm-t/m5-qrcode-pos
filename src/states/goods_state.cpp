@@ -152,7 +152,7 @@ const std::string GoodsState::GetGoodsNumbers()
         }
 
         char num[5];
-        snprintf(num, strlen(num), "x%1d", number);
+        snprintf(num, sizeof(num), "x%1d", number);
         str += num;
 
         if (i < _goods.size() - 1)
@@ -176,7 +176,7 @@ const std::string GoodsState::GetGoodsPrices()
         }
 
         char price[8];
-        snprintf(price, strlen(price), "%d円", _goods[i].GetAmountPrice());
+        snprintf(price, sizeof(price), "%d円", _goods[i].GetAmountPrice());
         str += price;
 
         if (i < _goods.size() - 1)
