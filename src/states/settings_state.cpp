@@ -177,7 +177,7 @@ void SettingsState::DecrementRTCSettings()
     switch (_rtc_current)
     {
         case RTCSettings::Years:
-            if (year == 1900)
+            if (year <= 1900)
             {
                 _rtc_datetime.date.year = 2099;
             }
@@ -187,7 +187,7 @@ void SettingsState::DecrementRTCSettings()
             }
             break;
         case RTCSettings::Months:
-            if (month == 1)
+            if (month <= 1)
             {
                 _rtc_datetime.date.month = 12;
             }
@@ -206,7 +206,7 @@ void SettingsState::DecrementRTCSettings()
                 case 8:
                 case 10:
                 case 12:
-                    if (date == 1)
+                    if (date <= 1)
                     {
                         _rtc_datetime.date.date = 31;
                     }
@@ -219,7 +219,7 @@ void SettingsState::DecrementRTCSettings()
                 case 6:
                 case 9:
                 case 11:
-                    if (date == 1)
+                    if (date <= 1)
                     {
                         _rtc_datetime.date.date = 30;
                     }
@@ -229,11 +229,11 @@ void SettingsState::DecrementRTCSettings()
                     }
                     break;
                 case 2:
-                    if ((year % 4 == 0 || year != 1900) && date == 1)
+                    if ((year % 4 == 0 || year != 1900) && date <= 1)
                     {
                         _rtc_datetime.date.date = 29;
                     }
-                    else if (date == 1)
+                    else if (date <= 1)
                     {
                         _rtc_datetime.date.date = 28;
                     }
@@ -245,7 +245,7 @@ void SettingsState::DecrementRTCSettings()
             }
             break;
         case RTCSettings::Hours:
-            if (_rtc_datetime.time.hours == 0)
+            if (_rtc_datetime.time.hours <= 0)
             {
                 _rtc_datetime.time.hours = 23;
             }
@@ -255,7 +255,7 @@ void SettingsState::DecrementRTCSettings()
             }
             break;
         case RTCSettings::Minutes:
-            if (_rtc_datetime.time.minutes == 0)
+            if (_rtc_datetime.time.minutes <= 0)
             {
                 _rtc_datetime.time.minutes = 59;
             }

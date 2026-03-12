@@ -206,6 +206,7 @@ void ui_settings_state_screen_init(void)
     lv_obj_set_height(ui_time_yyyy_lbl_3, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_time_yyyy_lbl_3, 72);
     lv_obj_set_y(ui_time_yyyy_lbl_3, 52);
+    lv_obj_add_flag(ui_time_yyyy_lbl_3, LV_OBJ_FLAG_CLICKABLE);
     lv_label_set_text(ui_time_yyyy_lbl_3, "0000");
     ui_object_set_themeable_style_property(ui_time_yyyy_lbl_3, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,
                                            _ui_theme_color_yellow_light_1);
@@ -230,6 +231,7 @@ void ui_settings_state_screen_init(void)
     lv_obj_set_height(ui_time_mm_lbl_3_0, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_time_mm_lbl_3_0, 148);
     lv_obj_set_y(ui_time_mm_lbl_3_0, 52);
+    lv_obj_add_flag(ui_time_mm_lbl_3_0, LV_OBJ_FLAG_CLICKABLE);
     lv_label_set_text(ui_time_mm_lbl_3_0, "00");
     ui_object_set_themeable_style_property(ui_time_mm_lbl_3_0, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,
                                            _ui_theme_color_white);
@@ -254,6 +256,7 @@ void ui_settings_state_screen_init(void)
     lv_obj_set_height(ui_time_dd_lbl_3, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_time_dd_lbl_3, 192);
     lv_obj_set_y(ui_time_dd_lbl_3, 52);
+    lv_obj_add_flag(ui_time_dd_lbl_3, LV_OBJ_FLAG_CLICKABLE);
     lv_label_set_text(ui_time_dd_lbl_3, "00");
     ui_object_set_themeable_style_property(ui_time_dd_lbl_3, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,
                                            _ui_theme_color_white);
@@ -266,6 +269,7 @@ void ui_settings_state_screen_init(void)
     lv_obj_set_height(ui_tim_hh_lbl_3, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_tim_hh_lbl_3, 240);
     lv_obj_set_y(ui_tim_hh_lbl_3, 52);
+    lv_obj_add_flag(ui_tim_hh_lbl_3, LV_OBJ_FLAG_CLICKABLE);
     lv_label_set_text(ui_tim_hh_lbl_3, "00");
     ui_object_set_themeable_style_property(ui_tim_hh_lbl_3, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,
                                            _ui_theme_color_white);
@@ -290,6 +294,7 @@ void ui_settings_state_screen_init(void)
     lv_obj_set_height(ui_time_mm_lbl_3_1, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_time_mm_lbl_3_1, 276);
     lv_obj_set_y(ui_time_mm_lbl_3_1, 52);
+    lv_obj_add_flag(ui_time_mm_lbl_3_1, LV_OBJ_FLAG_CLICKABLE);
     lv_label_set_text(ui_time_mm_lbl_3_1, "00");
     ui_object_set_themeable_style_property(ui_time_mm_lbl_3_1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,
                                            _ui_theme_color_white);

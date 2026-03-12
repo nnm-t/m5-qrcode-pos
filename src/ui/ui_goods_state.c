@@ -386,6 +386,7 @@ void ui_goods_state_screen_init(void)
     lv_obj_set_x(ui_total_price_lbl_0, -48);
     lv_obj_set_y(ui_total_price_lbl_0, 66);
     lv_obj_set_align(ui_total_price_lbl_0, LV_ALIGN_RIGHT_MID);
+    lv_obj_add_flag(ui_total_price_lbl_0, LV_OBJ_FLAG_CLICKABLE);
     lv_label_set_text(ui_total_price_lbl_0, "00000");
     ui_object_set_themeable_style_property(ui_total_price_lbl_0, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,
                                            _ui_theme_color_yellow_light_1);
