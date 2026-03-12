@@ -16,45 +16,46 @@ void SettingsState::Update(const uint32_t delay_ms)
 
 void SettingsState::SetRTCSettingsTheme(lv_obj_t* const object, const RTCSettings rtc_settings)
 {
-    const ui_theme_variable_t* theme = _rtc_current == rtc_settings ? _ui_theme_color_yellow_light_1 : _ui_theme_color_white;
+    const ui_theme_variable_t* theme_color = _rtc_current == rtc_settings ? _ui_theme_color_yellow_light_1 : _ui_theme_color_white;
+    const ui_theme_variable_t* theme_alpha = _rtc_current == rtc_settings ? _ui_theme_alpha_yellow_light_1 : _ui_theme_alpha_white;
 
-    ui_object_set_themeable_style_property(object, (uint32_t)LV_PART_MAIN | (uint32_t)LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR, theme);
-    ui_object_set_themeable_style_property(object, (uint32_t)LV_PART_MAIN | (uint32_t)LV_STATE_DEFAULT, LV_STYLE_TEXT_OPA, theme);
+    ui_object_set_themeable_style_property(object, (uint32_t)LV_PART_MAIN | (uint32_t)LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR, theme_color);
+    ui_object_set_themeable_style_property(object, (uint32_t)LV_PART_MAIN | (uint32_t)LV_STATE_DEFAULT, LV_STYLE_TEXT_OPA, theme_alpha);
 }
 
 void SettingsState::DrawRTCSettings()
 {
     // Year
-    char year_str[5];
-    snprintf(year_str, strlen(year_str), "%4d", _rtc_datetime.date.year);
+    char year_str[6];
+    snprintf(year_str, sizeof(year_str), "%04d", _rtc_datetime.date.year);
     _ui_label_set_property(ui_time_yyyy_lbl_3, _UI_LABEL_PROPERTY_TEXT, year_str);
 
     SetRTCSettingsTheme(ui_time_yyyy_lbl_3, RTCSettings::Years);
     
     // Month
     char month_str[3];
-    snprintf(month_str, strlen(month_str), "%2d", _rtc_datetime.date.month);
+    snprintf(month_str, sizeof(month_str), "%02d", _rtc_datetime.date.month);
     _ui_label_set_property(ui_time_mm_lbl_3_0, _UI_LABEL_PROPERTY_TEXT, month_str);
 
     SetRTCSettingsTheme(ui_time_mm_lbl_3_0, RTCSettings::Months);
 
     // Day
     char day_str[3];
-    snprintf(day_str, strlen(day_str), "%2d", _rtc_datetime.date.date);
+    snprintf(day_str, sizeof(day_str), "%02d", _rtc_datetime.date.date);
     _ui_label_set_property(ui_time_dd_lbl_3, _UI_LABEL_PROPERTY_TEXT, day_str);
 
     SetRTCSettingsTheme(ui_time_dd_lbl_3, RTCSettings::Days);
 
     // Hour
     char hour_str[3];
-    snprintf(hour_str, strlen(hour_str), "%2d", _rtc_datetime.time.hours);
+    snprintf(hour_str, sizeof(hour_str), "%02d", _rtc_datetime.time.hours);
     _ui_label_set_property(ui_tim_hh_lbl_3, _UI_LABEL_PROPERTY_TEXT, hour_str);
 
     SetRTCSettingsTheme(ui_tim_hh_lbl_3, RTCSettings::Hours);
 
     // Minute
     char minute_str[3];
-    snprintf(minute_str, strlen(minute_str), "%2d", _rtc_datetime.time.minutes);
+    snprintf(minute_str, sizeof(minute_str), "%02d", _rtc_datetime.time.minutes);
     _ui_label_set_property(ui_time_mm_lbl_3_1, _UI_LABEL_PROPERTY_TEXT, minute_str);
 
     SetRTCSettingsTheme(ui_time_mm_lbl_3_1, RTCSettings::Minutes);
