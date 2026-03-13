@@ -24,6 +24,11 @@ void JsonIO::Read()
 
     JsonDocument json_sales;
     Open(json_sales, sales_file_name);
+
+    JsonArray json_sales_goods = json_sales["goods"].as<JsonArray>();
+
+    JsonObject json_sales_amount = json_sales["amounts"].as<JsonObject>();
+    _amount_state.Deserialize(json_sales_amount);
 }
 
 void JsonIO::Write()

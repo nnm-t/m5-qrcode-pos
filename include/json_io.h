@@ -5,6 +5,7 @@
 #include <ArduinoJson.h>
 
 #include "states/goods_state.h"
+#include "states/amount_state.h"
 
 class JsonIO
 {
@@ -13,11 +14,12 @@ class JsonIO
 
     HardwareSerial* const _serial;
     GoodsState& _goods_state;
+    AmountState& _amount_state;
 
     void Open(JsonDocument& json_document, const char* file_name);
 
 public:
-    JsonIO(HardwareSerial* const serial, GoodsState& goods_state) : _serial(serial), _goods_state(goods_state)
+    JsonIO(HardwareSerial* const serial, GoodsState& goods_state, AmountState& amount_state) : _serial(serial), _goods_state(goods_state), _amount_state(amount_state)
     {
 
     }

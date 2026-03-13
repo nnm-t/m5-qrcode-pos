@@ -46,10 +46,10 @@ namespace {
     StateSelector state_selector(qrcode, hmi);
     GoodsState goods_state(&state_selector, clock);
     AmountState amount_state(&state_selector, clock);
-    PaymentState payment_state(&state_selector, goods_state, clock);
+    PaymentState payment_state(&state_selector, goods_state, amount_state, clock);
     SettingsState settings_state(&state_selector, clock);
 
-    JsonIO json_io(&Serial, goods_state);
+    JsonIO json_io(&Serial, goods_state, amount_state);
 }
 
 static uint32_t my_tick()

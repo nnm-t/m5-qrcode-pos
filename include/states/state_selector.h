@@ -50,6 +50,10 @@ public:
 
     void EnableQRCodeReader() override;
 
+	void BackToGoodsState() override;
+
+	void GoToPaymentState() override;
+
 	static void ToGoodsState();
 
 	static void ToAmountState();

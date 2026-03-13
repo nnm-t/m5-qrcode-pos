@@ -107,6 +107,16 @@ void StateSelector::OnHMIEncoderDecrement()
     _current_state->OnHMIEncoderDecrement();
 }
 
+void StateSelector::BackToGoodsState()
+{
+    ToGoodsState();
+}
+
+void StateSelector::GoToPaymentState()
+{
+    ToPaymentState();
+}
+
 void StateSelector::ToGoodsState()
 {
     _instance->_current_state = _instance->goods_state;

@@ -26,11 +26,17 @@ void PaymentState::Update(const uint32_t delay_ms)
 void PaymentState::Okay()
 {
     // 購入
+
+    // GoodsState へ戻る
+    _state_selector->BackToGoodsState();
 }
 
 void PaymentState::OkayFree()
 {
-    // 合計金額分の値を金額入力でマイナスして購入
+    // 合計金額分の値を金額入力でマイナス
+
+    // 購入
+    Okay();
 }
 
 void PaymentState::OnHMIButton1Pressed()
@@ -42,6 +48,7 @@ void PaymentState::OnHMIButton1Pressed()
 void PaymentState::OnHMIButton2Pressed()
 {
     // 何もせずGoodsStateに戻る
+    _state_selector->BackToGoodsState();
 }
 
 void PaymentState::OnOkayButtonClicked()

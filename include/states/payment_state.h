@@ -8,6 +8,7 @@
 #include "i_state.h"
 #include "i_state_selector.h"
 #include "goods_state.h"
+#include "amount_state.h"
 #include "clock.h"
 
 class PaymentState : public IState
@@ -16,6 +17,7 @@ class PaymentState : public IState
 
     IStateSelector* const _state_selector;
     GoodsState& _goods_state;
+    AmountState& _amount_state;
     Clock& _clock;
 
     void Okay();
@@ -23,7 +25,7 @@ class PaymentState : public IState
     void OkayFree();
 
 public:
-    PaymentState(IStateSelector* const state_selector, GoodsState& goods_state, Clock& clock) : _state_selector(state_selector), _goods_state(goods_state), _clock(clock)
+    PaymentState(IStateSelector* const state_selector, GoodsState& goods_state, AmountState& amount_state, Clock& clock) : _state_selector(state_selector), _goods_state(goods_state), _amount_state(amount_state), _clock(clock)
     {
         _instance = this;
     }
