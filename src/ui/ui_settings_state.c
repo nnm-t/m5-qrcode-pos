@@ -408,7 +408,7 @@ void ui_settings_state_screen_init(void)
     lv_obj_set_width(ui_mac_addr_lbl_3, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_mac_addr_lbl_3, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_mac_addr_lbl_3, -12);
-    lv_obj_set_y(ui_mac_addr_lbl_3, 36);
+    lv_obj_set_y(ui_mac_addr_lbl_3, 38);
     lv_obj_set_align(ui_mac_addr_lbl_3, LV_ALIGN_RIGHT_MID);
     lv_label_set_text(ui_mac_addr_lbl_3, "00:00:00:00:00:00");
     ui_object_set_themeable_style_property(ui_mac_addr_lbl_3, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,

@@ -4,6 +4,8 @@
 #include <M5Unified.h>
 #include <lvgl.h>
 
+#include "esp_mac.h"
+
 #include "ui/ui_settings_state.h"
 
 #include "i_state.h"

@@ -6,6 +6,14 @@ void SettingsState::Begin()
 {
     _rtc_datetime = M5.Rtc.getDateTime();
     DrawRTCSettings();
+
+    // MACアドレス表示
+    uint8_t mac_wifi[6];
+    esp_read_mac(mac_wifi, ESP_MAC_WIFI_STA);
+
+    char mac_wifi_str[18];
+    snprintf(mac_wifi_str, sizeof(mac_wifi_str), "%02x:%02x:%02x:%02x:%02x:%02x", mac_wifi[0], mac_wifi[1], mac_wifi[2], mac_wifi[3], mac_wifi[4], mac_wifi[5]);
+    _ui_label_set_property(ui_mac_addr_lbl_3, _UI_LABEL_PROPERTY_TEXT, mac_wifi_str);
 }
 
 void SettingsState::Update(const uint32_t delay_ms)
