@@ -22,6 +22,7 @@
 
 #include "json_io.h"
 #include "clock.h"
+#include "battery.h"
 #include "qr.h"
 #include "hmi.h"
 
@@ -35,19 +36,21 @@ uint8_t draw_buf[DRAW_BUF_SIZE / 4];
 namespace {
     static constexpr const uint8_t sd_cs_pin = 4;
     static constexpr const uint32_t delay_ms = 10;
+    static constexpr const uint32_t duration_ms = 500;
 
     M5ModuleQRCode module_qrcode;
     M5ModuleHMI module_hmi;
 
     QR qrcode(module_qrcode);
     HMI hmi(module_hmi);
-    Clock clock(delay_ms);
+    Clock clock(duration_ms);
+    Battery battery(duration_ms);
 
     StateSelector state_selector(qrcode, hmi);
-    GoodsState goods_state(&state_selector, clock);
-    AmountState amount_state(&state_selector, clock);
-    PaymentState payment_state(&state_selector, goods_state, amount_state, clock);
-    SettingsState settings_state(&state_selector, clock);
+    GoodsState goods_state(&state_selector, clock, battery);
+    AmountState amount_state(&state_selector, clock, battery);
+    PaymentState payment_state(&state_selector, goods_state, amount_state, clock, battery);
+    SettingsState settings_state(&state_selector, clock, battery);
 
     JsonIO json_io(&Serial, goods_state, amount_state);
 }

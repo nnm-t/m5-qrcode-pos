@@ -13,6 +13,7 @@
 #include "i_state.h"
 #include "i_state_selector.h"
 #include "clock.h"
+#include "battery.h"
 #include "good.h"
 
 class GoodsState : public IState
@@ -25,11 +26,15 @@ class GoodsState : public IState
 
 	IStateSelector* const _state_selector;
 	Clock& _clock;
+	Battery& _battery;
+
+	lv_obj_t* _ui_time = nullptr;
+	lv_obj_t* _ui_battery = nullptr;
 
 	void Draw();
 
 public:
-	GoodsState(IStateSelector* const state_selector, Clock& clock) : _state_selector(state_selector), _clock(clock)
+	GoodsState(IStateSelector* const state_selector, Clock& clock, Battery& battery) : _state_selector(state_selector), _clock(clock), _battery(battery)
 	{
 		_goods = std::vector<Good>();
 		_goods_hash = std::unordered_map<std::string, size_t>();

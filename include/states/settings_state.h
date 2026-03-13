@@ -11,6 +11,7 @@
 #include "i_state.h"
 #include "i_state_selector.h"
 #include "clock.h"
+#include "battery.h"
 
 enum class RTCSettings : uint8_t
 {
@@ -27,9 +28,13 @@ class SettingsState : public IState
 
     IStateSelector* const _state_selector;
     Clock& _clock;
+	Battery& _battery;
 
     RTCSettings _rtc_current = RTCSettings::Years;
     m5::rtc_datetime_t _rtc_datetime = m5::rtc_datetime_t();
+
+	lv_obj_t* _ui_time = nullptr;
+	lv_obj_t* _ui_battery = nullptr;
 
     void SetRTCSettingsTheme(lv_obj_t* const object, const RTCSettings rtc_settings);
 
@@ -42,7 +47,7 @@ class SettingsState : public IState
     void ApplySettings();
 
 public:
-    SettingsState(IStateSelector* const state_selector, Clock& clock) : _state_selector(state_selector), _clock(clock)
+    SettingsState(IStateSelector* const state_selector, Clock& clock, Battery& battery) : _state_selector(state_selector), _clock(clock), _battery(battery)
     {
         _instance = this;
     }

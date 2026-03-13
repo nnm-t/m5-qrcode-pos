@@ -4,6 +4,9 @@ AmountState* AmountState::_instance;
 
 void AmountState::Begin()
 {
+    _ui_time = ui_comp_get_child(ui_header_1, UI_COMP_HEADER_TIME_LBL);
+    _ui_battery = ui_comp_get_child(ui_header_1, UI_COMP_HEADER_BATTERY_IMG);
+
     GetAmountValue();
 
     // 金額入力 一覧表示
@@ -11,8 +14,8 @@ void AmountState::Begin()
 
 void AmountState::Update(const uint32_t delay_ms)
 {
-    lv_obj_t* const ui_time_0 = ui_comp_get_child(ui_header_2, UI_COMP_HEADER_TIME_LBL);
-    _clock.Update(ui_time_0, delay_ms);
+    _clock.Update(_ui_time, delay_ms);
+    _battery.Update(_ui_battery, delay_ms);
 }
 
 void AmountState::Deserialize(JsonObject& json_object)

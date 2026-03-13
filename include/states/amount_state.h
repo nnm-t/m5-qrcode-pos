@@ -11,6 +11,7 @@
 #include "i_state.h"
 #include "i_state_selector.h"
 #include "clock.h"
+#include "battery.h"
 
 class AmountState : public IState
 {
@@ -18,6 +19,10 @@ class AmountState : public IState
 
     IStateSelector* const _state_selector;
     Clock& _clock;
+	Battery& _battery;
+
+	lv_obj_t* _ui_time = nullptr;
+	lv_obj_t* _ui_battery = nullptr;
 
     std::unordered_map<std::string, int32_t> _amount_values = std::unordered_map<std::string, int32_t>();
     int32_t _amount_value = 0;
@@ -27,7 +32,7 @@ class AmountState : public IState
     void GetAmountValue();
 
 public:
-    AmountState(IStateSelector* const state_selector, Clock& clock) : _state_selector(state_selector), _clock(clock)
+    AmountState(IStateSelector* const state_selector, Clock& clock, Battery& battery) : _state_selector(state_selector), _clock(clock), _battery(battery)
     {
         _instance = this;
     }
