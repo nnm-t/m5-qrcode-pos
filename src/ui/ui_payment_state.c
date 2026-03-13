@@ -26,7 +26,7 @@ void ui_event_back_btn_2(lv_event_t * e)
 
     if(event_code == LV_EVENT_CLICKED) {
         OnPaymentBackButtonClicked(e);
-        _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_FADE_OUT, 500, 0, &ui_goods_state_screen_init);
+        _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_OUT_RIGHT, 500, 0, &ui_goods_state_screen_init);
     }
 }
 
@@ -36,7 +36,7 @@ void ui_event_free_btn_2(lv_event_t * e)
 
     if(event_code == LV_EVENT_CLICKED) {
         OnPaymentFreeButtonClicked(e);
-        _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_FADE_OUT, 500, 0, &ui_goods_state_screen_init);
+        _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_OUT_RIGHT, 500, 0, &ui_goods_state_screen_init);
     }
 }
 
@@ -45,8 +45,8 @@ void ui_event_okay_btn_2(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
-        _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_FADE_OUT, 500, 0, &ui_goods_state_screen_init);
         OnPaymentOkayButtonClicked(e);
+        _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_OUT_RIGHT, 500, 0, &ui_goods_state_screen_init);
     }
 }
 

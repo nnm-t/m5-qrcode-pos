@@ -49,9 +49,9 @@ void SettingsState::DrawRTCSettings()
     // Hour
     char hour_str[3];
     snprintf(hour_str, sizeof(hour_str), "%02d", _rtc_datetime.time.hours);
-    _ui_label_set_property(ui_tim_hh_lbl_3, _UI_LABEL_PROPERTY_TEXT, hour_str);
+    _ui_label_set_property(ui_time_hh_lbl_3, _UI_LABEL_PROPERTY_TEXT, hour_str);
 
-    SetRTCSettingsTheme(ui_tim_hh_lbl_3, RTCSettings::Hours);
+    SetRTCSettingsTheme(ui_time_hh_lbl_3, RTCSettings::Hours);
 
     // Minute
     char minute_str[3];
@@ -275,6 +275,54 @@ void SettingsState::ApplySettings()
     M5.Rtc.setDateTime(_rtc_datetime);
 }
 
+void SettingsState::CursorLeft()
+{
+    switch (_rtc_current)
+    {
+        case RTCSettings::Years:
+            _rtc_current = RTCSettings::Minutes;
+            break;
+        case RTCSettings::Months:
+            _rtc_current = RTCSettings::Years;
+            break;
+        case RTCSettings::Days:
+            _rtc_current = RTCSettings::Months;
+            break;
+        case RTCSettings::Hours:
+            _rtc_current = RTCSettings::Days;
+            break;
+        case RTCSettings::Minutes:
+            _rtc_current = RTCSettings::Hours;
+            break;
+    }
+
+    DrawRTCSettings();
+}
+
+void SettingsState::CursorRight()
+{
+    switch (_rtc_current)
+    {
+        case RTCSettings::Years:
+            _rtc_current = RTCSettings::Months;
+            break;
+        case RTCSettings::Months:
+            _rtc_current = RTCSettings::Days;
+            break;
+        case RTCSettings::Days:
+            _rtc_current = RTCSettings::Hours;
+            break;
+        case RTCSettings::Hours:
+            _rtc_current = RTCSettings::Minutes;
+            break;
+        case RTCSettings::Minutes:
+            _rtc_current = RTCSettings::Years;
+            break;
+    }
+
+    DrawRTCSettings();
+}
+
 void SettingsState::OnHMIEncoderIncrement()
 {
     IncrementRTCSettings();
@@ -283,6 +331,16 @@ void SettingsState::OnHMIEncoderIncrement()
 void SettingsState::OnHMIEncoderDecrement()
 {
     DecrementRTCSettings();
+}
+
+void SettingsState::OnLeftButtonClicked()
+{
+    _instance->CursorLeft();
+}
+
+void SettingsState::OnRightButtonClicked()
+{
+    _instance->CursorRight();
 }
 
 void SettingsState::OnPlusButtonClicked()

@@ -104,10 +104,27 @@ void OnPaymentOkayButtonClicked(lv_event_t * e)
 	StateSelector::ToGoodsState();
 }
 
+void OnSettingsBrightnessValueChanged(lv_event_t * e)
+{
+	// Your code here
+}
+
 void OnSettingsBackButtonClicked(lv_event_t * e)
 {
 	// Your code here
 	StateSelector::ToGoodsState();
+}
+
+void OnSettingsLeftButtonClicked(lv_event_t * e)
+{
+	// Your code here
+	SettingsState::OnLeftButtonClicked();
+}
+
+void OnSettingsRightButtonClicked(lv_event_t * e)
+{
+	// Your code here
+	SettingsState::OnRightButtonClicked();
 }
 
 void OnSettingsPlusButtonClicked(lv_event_t * e)

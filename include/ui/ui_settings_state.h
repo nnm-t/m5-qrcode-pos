@@ -18,6 +18,10 @@ extern lv_obj_t * ui_header_3;
 extern lv_obj_t * ui_footer_3;
 extern void ui_event_back_btn_3(lv_event_t * e);
 extern lv_obj_t * ui_back_btn_3;
+extern void ui_event_left_btn_3(lv_event_t * e);
+extern lv_obj_t * ui_left_btn_3;
+extern void ui_event_right_btn_3(lv_event_t * e);
+extern lv_obj_t * ui_right_btn_3;
 extern void ui_event_plus_btn_3(lv_event_t * e);
 extern lv_obj_t * ui_plus_btn_3;
 extern void ui_event_minus_btn_3(lv_event_t * e);
@@ -33,13 +37,16 @@ extern lv_obj_t * ui_time_mm_lbl_3_0;
 extern lv_obj_t * ui_label_3_2;
 extern void ui_event_time_dd_lbl_3(lv_event_t * e);
 extern lv_obj_t * ui_time_dd_lbl_3;
-extern void ui_event_tim_hh_lbl_3(lv_event_t * e);
-extern lv_obj_t * ui_tim_hh_lbl_3;
+extern void ui_event_time_hh_lbl_3(lv_event_t * e);
+extern lv_obj_t * ui_time_hh_lbl_3;
 extern lv_obj_t * ui_label_3_3;
 extern void ui_event_time_mm_lbl_3_1(lv_event_t * e);
 extern lv_obj_t * ui_time_mm_lbl_3_1;
 extern lv_obj_t * ui_label_3_4;
+extern void ui_event_blightness_sld_3(lv_event_t * e);
 extern lv_obj_t * ui_blightness_sld_3;
+extern lv_obj_t * ui_label_3_5;
+extern lv_obj_t * ui_mac_addr_lbl_3;
 // CUSTOM VARIABLES
 
 #ifdef __cplusplus

@@ -51,9 +51,17 @@ public:
 
     void ChangeRTCCurrent(const RTCSettings rtc_settings);
 
+    void CursorLeft();
+
+    void CursorRight();
+
     void OnHMIEncoderIncrement() override;
 
     void OnHMIEncoderDecrement() override;
+
+    static void OnLeftButtonClicked();
+
+    static void OnRightButtonClicked();
 
     static void OnPlusButtonClicked();
 
