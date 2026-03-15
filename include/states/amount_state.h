@@ -28,6 +28,7 @@ class AmountState : public IState
     int32_t _amount_value = 0;
 
     void AddAmountValue();
+    void AddAmountValue(const int32_t value);
 
     void GetAmountValue();
 
@@ -42,6 +43,10 @@ public:
     void Update(const uint32_t delay_ms) override;
 
     void Deserialize(JsonObject& json_object);
+
+    void RegisterValue(const int32_t value);
+
+    void OnHMIButtonSPressed() override;
 
     void OnHMIButton1Pressed() override;
 

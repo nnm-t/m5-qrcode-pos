@@ -50,7 +50,7 @@ void OnGoodsNextButtonClicked(lv_event_t * e)
 void OnGoodsAmountButtonClicked(lv_event_t * e)
 {
 	// Your code here
-	StateSelector::ToSettingsState();
+	StateSelector::ToAmountState();
 }
 
 void OnGoodsPaymentButtonClicked(lv_event_t * e)

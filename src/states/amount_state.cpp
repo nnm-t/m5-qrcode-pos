@@ -10,6 +10,7 @@ void AmountState::Begin()
     GetAmountValue();
 
     // 金額入力 一覧表示
+    _ui_label_set_property(ui_goods_list_title_lbl_1, _UI_LABEL_PROPERTY_TEXT, "");
 }
 
 void AmountState::Update(const uint32_t delay_ms)
@@ -29,13 +30,23 @@ void AmountState::Deserialize(JsonObject& json_object)
     }
 }
 
+void AmountState::RegisterValue(const int32_t value)
+{
+    AddAmountValue(value);
+}
+
 void AmountState::AddAmountValue()
+{
+    AddAmountValue(_amount_value);
+}
+
+void AmountState::AddAmountValue(const int32_t value)
 {
     // unorderd_map へ反映
     std::string value_str;
     value_str.reserve(6);
 
-    snprintf(value_str.data(), value_str.size(), "%d", _amount_value);
+    snprintf(value_str.data(), value_str.size(), "%d", value);
 
     if (_amount_values.find(value_str) == _amount_values.end())
     {
@@ -56,6 +67,11 @@ void AmountState::GetAmountValue()
     _amount_value = lv_spinbox_get_value(ui_amount_price_spn_1);
 }
 
+void AmountState::OnHMIButtonSPressed()
+{
+
+}
+
 void AmountState::OnHMIButton1Pressed()
 {
     AddAmountValue();
@@ -72,17 +88,13 @@ void AmountState::OnHMIButton2Pressed()
 void AmountState::OnHMIEncoderIncrement()
 {
     // 金額入力 Plus
-    const int32_t step = lv_spinbox_get_step(ui_amount_price_spn_1);
-    _amount_value = _amount_value + step > 9900 ? 9900 : _amount_value + step;
-    lv_spinbox_set_value(ui_amount_price_spn_1, _amount_value);
+    lv_spinbox_increment(ui_amount_price_spn_1);
 }
 
 void AmountState::OnHMIEncoderDecrement()
 {
     // 金額入力 Minus
-    const int32_t step = lv_spinbox_get_step(ui_amount_price_spn_1);
-    _amount_value = _amount_value - step < -9900 ? -9900 : _amount_value - step;
-    lv_spinbox_set_value(ui_amount_price_spn_1, _amount_value);
+    lv_spinbox_decrement(ui_amount_price_spn_1);
 }
 
 void AmountState::OnSpinBoxValueChanged()

@@ -39,7 +39,7 @@ void ui_event_back_btn_1(lv_event_t * e)
 
     if(event_code == LV_EVENT_CLICKED) {
         OnAmountBackButtonClicked(e);
-        _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_OUT_RIGHT, 500, 0, &ui_goods_state_screen_init);
+        _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 500, 0, &ui_goods_state_screen_init);
     }
 }
 
