@@ -1,5 +1,7 @@
 #pragma once
 
+#include <algorithm>
+#include <string>
 #include <unordered_map>
 
 #include <Arduino.h>
@@ -27,7 +29,10 @@ class AmountState : public IState
     std::unordered_map<std::string, int32_t> _amount_values = std::unordered_map<std::string, int32_t>();
     int32_t _amount_value = 0;
 
+    void DrawList();
+
     void AddAmountValue();
+
     void AddAmountValue(const int32_t value);
 
     void GetAmountValue();

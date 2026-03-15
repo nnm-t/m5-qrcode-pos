@@ -8,9 +8,7 @@ void AmountState::Begin()
     _ui_battery = ui_comp_get_child(ui_header_1, UI_COMP_HEADER_BATTERY_IMG);
 
     GetAmountValue();
-
-    // 金額入力 一覧表示
-    _ui_label_set_property(ui_goods_list_title_lbl_1, _UI_LABEL_PROPERTY_TEXT, "");
+    DrawList();
 }
 
 void AmountState::Update(const uint32_t delay_ms)
@@ -33,6 +31,39 @@ void AmountState::Deserialize(JsonObject& json_object)
 void AmountState::RegisterValue(const int32_t value)
 {
     AddAmountValue(value);
+}
+
+void AmountState::DrawList()
+{
+    std::string amounts_str;
+    std::string numbers_str;
+    std::string subtotals_str;
+
+    std::for_each(_amount_values.begin(), _amount_values.end(),
+    [&](std::unordered_map<std::string, int32_t>::value_type pair){
+        if (pair != *_amount_values.begin())
+        {
+            amounts_str += "\n";
+            numbers_str += "\n";
+            subtotals_str += "\n";
+        }
+
+        amounts_str += pair.first + "円";
+
+        char number_str[6];
+        snprintf(number_str, sizeof(number_str), "x%d", pair.second);
+        numbers_str += number_str;
+
+        const int32_t subtotal = std::stoi(pair.first) + pair.second;
+        char subtotal_str[13];
+        snprintf(subtotal_str, sizeof(subtotal_str), "%d円", subtotal);
+        subtotals_str += subtotal_str;
+    });
+
+    // 金額入力 一覧表示
+    _ui_label_set_property(ui_goods_list_title_lbl_1, _UI_LABEL_PROPERTY_TEXT, amounts_str.c_str());
+    _ui_label_set_property(ui_goods_list_number_lbl_1, _UI_LABEL_PROPERTY_TEXT, numbers_str.c_str());
+    _ui_label_set_property(ui_goods_list_price_lbl_1, _UI_LABEL_PROPERTY_TEXT, subtotals_str.c_str());
 }
 
 void AmountState::AddAmountValue()
