@@ -10,8 +10,8 @@
 #include "amount_state.h"
 #include "payment_state.h"
 #include "settings_state.h"
-#include "qr.h"
-#include "hmi.h"
+#include "module/qr.h"
+#include "module/hmi.h"
 
 class StateSelector : public IStateSelector
 {

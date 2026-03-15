@@ -8,7 +8,7 @@
 
 #if LV_USE_FS_ARDUINO_SD == 0
 
-#include "lv_fs_sd_memfs.h"
+#include "gfx/lv_fs_sd_memfs.h"
 
 #endif
 
@@ -20,11 +20,11 @@
 
 #include "ui/ui.h"
 
-#include "json_io.h"
-#include "clock.h"
-#include "battery.h"
-#include "qr.h"
-#include "hmi.h"
+#include "io/json_io.h"
+#include "util/clock.h"
+#include "util/battery.h"
+#include "module/qr.h"
+#include "module/hmi.h"
 
 #define TFT_HOR_RES                     320
 #define TFT_VER_RES                     240

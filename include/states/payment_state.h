@@ -9,8 +9,8 @@
 #include "i_state_selector.h"
 #include "goods_state.h"
 #include "amount_state.h"
-#include "clock.h"
-#include "battery.h"
+#include "util/clock.h"
+#include "util/battery.h"
 
 class PaymentState : public IState
 {

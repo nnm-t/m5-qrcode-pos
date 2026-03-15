@@ -12,8 +12,8 @@
 
 #include "i_state.h"
 #include "i_state_selector.h"
-#include "clock.h"
-#include "battery.h"
+#include "util/clock.h"
+#include "util/battery.h"
 #include "good.h"
 
 class GoodsState : public IState

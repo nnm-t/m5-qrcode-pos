@@ -1,4 +1,4 @@
-#include "qr.h"
+#include "module/qr.h"
 
 void QR::Begin(std::function<void(std::string&)> scan_result_callback, HardwareSerial* const serial, const int pin_tx, const int pin_rx, const long baudrate)
 {

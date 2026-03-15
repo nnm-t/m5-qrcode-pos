@@ -1,4 +1,4 @@
-#include "battery.h"
+#include "util/battery.h"
 
 void Battery::Update(lv_obj_t* const image, const uint32_t delay_ms)
 {

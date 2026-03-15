@@ -1,4 +1,4 @@
-#include "hmi.h"
+#include "module/hmi.h"
 
 void HMI::Begin(TwoWire* wire, const uint8_t sda, const uint8_t scl, const uint32_t speed)
 {
