@@ -33,6 +33,7 @@ extern "C" {
 
 #include "ui_goods_state.h"
 #include "ui_amount_state.h"
+#include "ui_sales_state.h"
 #include "ui_payment_state.h"
 #include "ui_settings_state.h"
 
@@ -47,11 +48,11 @@ extern lv_obj_t * ui____initial_actions0;
 LV_IMG_DECLARE(
     ui_img_battery_android_full_24dp_e3e3e3_fill0_wght400_grad0_opsz24_png);    // assets/battery_android_full_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png
 LV_IMG_DECLARE(
-    ui_img_barcode_scanner_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png);    // assets/barcode_scanner_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png
-LV_IMG_DECLARE(
     ui_img_add_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png);    // assets/add_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png
 LV_IMG_DECLARE(
     ui_img_remove_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png);    // assets/remove_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png
+LV_IMG_DECLARE(
+    ui_img_point_of_sale_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png);    // assets/point_of_sale_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png
 LV_IMG_DECLARE(
     ui_img_currency_yen_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png);    // assets/currency_yen_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png
 LV_IMG_DECLARE(
@@ -72,6 +73,8 @@ LV_IMG_DECLARE(
     ui_img_arrow_back_ios_new_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png);    // assets/arrow_back_ios_new_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png
 LV_IMG_DECLARE(
     ui_img_arrow_forward_ios_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png);    // assets/arrow_forward_ios_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png
+LV_IMG_DECLARE(
+    ui_img_barcode_scanner_48dp_e3e3e3_fill0_wght400_grad0_opsz48_png);    // assets/barcode_scanner_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png
 LV_IMG_DECLARE(
     ui_img_battery_android_0_24dp_e3e3e3_fill0_wght400_grad0_opsz24_png);    // assets/battery_android_0_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png
 LV_IMG_DECLARE(

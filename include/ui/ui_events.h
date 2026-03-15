@@ -10,22 +10,23 @@
 extern "C" {
 #endif
 
-void OnBarcodeButtonClicked(lv_event_t * e);
-void OnAddButtonClicked(lv_event_t * e);
-void OnRemoveButtonClicked(lv_event_t * e);
-void OnTotalPriceLabelLongPressed(lv_event_t * e);
-void OnGoodsPrevButtonClicked(lv_event_t * e);
-void OnGoodsNextButtonClicked(lv_event_t * e);
+void OnGoodsAddButtonClicked(lv_event_t * e);
+void OnGoodsRemoveButtonClicked(lv_event_t * e);
+void OnGoodsSalesButtonClicked(lv_event_t * e);
 void OnGoodsAmountButtonClicked(lv_event_t * e);
 void OnGoodsPaymentButtonClicked(lv_event_t * e);
 void OnGoodsSettingsButtonClicked(lv_event_t * e);
-void OnAmountBackButtonClicked(lv_event_t * e);
+void OnGoodsImageClicked(lv_event_t * e);
+void OnTotalPriceLabelLongPressed(lv_event_t * e);
+void OnGoodsPrevButtonClicked(lv_event_t * e);
+void OnGoodsNextButtonClicked(lv_event_t * e);
 void OnAmountPaymentButtonClicked(lv_event_t * e);
+void OnAmountBackButtonClicked(lv_event_t * e);
 void OnAmountSpinboxValueChanged(lv_event_t * e);
+void OnSalesBackButtonClicked(lv_event_t * e);
 void OnPaymentBackButtonClicked(lv_event_t * e);
 void OnPaymentFreeButtonClicked(lv_event_t * e);
 void OnPaymentOkayButtonClicked(lv_event_t * e);
-void OnSettingsBrightnessValueChanged(lv_event_t * e);
 void OnSettingsBackButtonClicked(lv_event_t * e);
 void OnSettingsLeftButtonClicked(lv_event_t * e);
 void OnSettingsRightButtonClicked(lv_event_t * e);
@@ -37,6 +38,7 @@ void OnMM0LabelClicked(lv_event_t * e);
 void OnDDLabelClicked(lv_event_t * e);
 void OnHHLabelClicked(lv_event_t * e);
 void OnMM1LabelClicked(lv_event_t * e);
+void OnSettingsBrightnessValueChanged(lv_event_t * e);
 
 #ifdef __cplusplus
 } /*extern "C"*/

@@ -11,22 +11,27 @@
 #include "states/payment_state.h"
 #include "states/settings_state.h"
 
-void OnBarcodeButtonClicked(lv_event_t * e)
+void OnGoodsImageClicked(lv_event_t * e)
 {
 	// Your code here
 	GoodsState::OnQRCodeButtonClicked();
 }
 
-void OnAddButtonClicked(lv_event_t * e)
+void OnGoodsAddButtonClicked(lv_event_t * e)
 {
 	// Your code here
 	GoodsState::OnPlusButtonClicked();
 }
 
-void OnRemoveButtonClicked(lv_event_t * e)
+void OnGoodsRemoveButtonClicked(lv_event_t * e)
 {
 	// Your code here
 	GoodsState::OnMinusButtonClicked();
+}
+
+void OnGoodsSalesButtonClicked(lv_event_t * e)
+{
+	// Your code here
 }
 
 void OnTotalPriceLabelLongPressed(lv_event_t * e)
@@ -174,4 +179,10 @@ void OnMM1LabelClicked(lv_event_t * e)
 {
 	// Your code here
 	SettingsState::OnMM1LabelClicked();
+}
+
+void OnSalesBackButtonClicked(lv_event_t * e)
+{
+	// Your code here
+	StateSelector::ToGoodsState();
 }

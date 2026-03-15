@@ -157,6 +157,7 @@ void ui_payment_state_screen_init(void)
     ui_goods_list_title_lbl_2 = lv_label_create(ui_goods_list_2);
     lv_obj_set_width(ui_goods_list_title_lbl_2, 160);
     lv_obj_set_height(ui_goods_list_title_lbl_2, LV_SIZE_CONTENT);    /// 1
+    lv_label_set_long_mode(ui_goods_list_title_lbl_2, LV_LABEL_LONG_MODE_DOTS);
     lv_label_set_text(ui_goods_list_title_lbl_2, "商品タイトル");
     ui_object_set_themeable_style_property(ui_goods_list_title_lbl_2, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,
                                            _ui_theme_color_white);

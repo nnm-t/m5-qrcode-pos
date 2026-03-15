@@ -143,7 +143,7 @@ void ui_amount_state_screen_init(void)
 
     ui_label_1_0 = lv_label_create(ui_amount_1);
     lv_obj_set_width(ui_label_1_0, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_label_1_0, LV_SIZE_CONTENT);    /// 43
+    lv_obj_set_height(ui_label_1_0, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_label_1_0, 6);
     lv_obj_set_y(ui_label_1_0, 8);
     lv_label_set_text(ui_label_1_0, "金額入力");
@@ -173,7 +173,6 @@ void ui_amount_state_screen_init(void)
     lv_spinbox_set_digit_format(ui_amount_price_spn_1, 4, 0);
     lv_spinbox_set_range(ui_amount_price_spn_1, -9900, 9900);
     lv_spinbox_set_cursor_pos(ui_amount_price_spn_1, 3 - 1);
-    lv_spinbox_set_step(ui_amount_price_spn_1, 100);
     ui_object_set_themeable_style_property(ui_amount_price_spn_1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,
                                            _ui_theme_color_white);
     ui_object_set_themeable_style_property(ui_amount_price_spn_1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_OPA,
@@ -246,6 +245,7 @@ void ui_amount_state_screen_init(void)
     ui_goods_list_title_lbl_1 = lv_label_create(ui_goods_list_1);
     lv_obj_set_width(ui_goods_list_title_lbl_1, 160);
     lv_obj_set_height(ui_goods_list_title_lbl_1, LV_SIZE_CONTENT);    /// 1
+    lv_label_set_long_mode(ui_goods_list_title_lbl_1, LV_LABEL_LONG_MODE_DOTS);
     lv_label_set_text(ui_goods_list_title_lbl_1, "商品タイトル");
     ui_object_set_themeable_style_property(ui_goods_list_title_lbl_1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,
                                            _ui_theme_color_white);
