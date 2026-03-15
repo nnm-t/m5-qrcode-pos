@@ -32,6 +32,7 @@ void OnGoodsRemoveButtonClicked(lv_event_t * e)
 void OnGoodsSalesButtonClicked(lv_event_t * e)
 {
 	// Your code here
+	StateSelector::ToSalesState();
 }
 
 void OnTotalPriceLabelLongPressed(lv_event_t * e)

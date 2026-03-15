@@ -164,3 +164,15 @@ void StateSelector::ToSettingsState()
 
     _instance->_current_state->Begin();
 }
+
+void StateSelector::ToSalesState()
+{
+    _instance->_current_state = _instance->sales_state;
+
+    if (_instance->_current_state == nullptr)
+    {
+        return;
+    }
+
+    _instance->_current_state->Begin();
+}

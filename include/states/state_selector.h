@@ -10,6 +10,7 @@
 #include "amount_state.h"
 #include "payment_state.h"
 #include "settings_state.h"
+#include "sales_state.h"
 #include "module/qr.h"
 #include "module/hmi.h"
 
@@ -38,6 +39,7 @@ public:
 	AmountState* amount_state = nullptr;
 	PaymentState* payment_state = nullptr;
 	SettingsState* settings_state = nullptr;
+	SalesState* sales_state = nullptr;
 
 	StateSelector(QR& qr, HMI& hmi) : _qr(qr), _hmi(hmi)
 	{
@@ -61,4 +63,6 @@ public:
 	static void ToPaymentState();
 
 	static void ToSettingsState();
+
+	static void ToSalesState();
 };

@@ -9,6 +9,7 @@
 #include "states/amount_state.h"
 #include "states/payment_state.h"
 #include "states/settings_state.h"
+#include "states/sales_state.h"
 
 #include "ui/ui.h"
 
@@ -36,6 +37,7 @@ namespace {
     AmountState amount_state(&state_selector, clock, battery);
     PaymentState payment_state(&state_selector, goods_state, amount_state, clock, battery);
     SettingsState settings_state(&state_selector, clock, battery);
+    SalesState sales_state(&state_selector, goods_state, amount_state, clock, battery);
 
     JsonIO json_io(&Serial, goods_state, amount_state);
 }
@@ -55,6 +57,7 @@ void setup()
     state_selector.amount_state = &amount_state;
     state_selector.payment_state = &payment_state;
     state_selector.settings_state = &settings_state;
+    state_selector.sales_state = &sales_state;
     state_selector.Begin();
 }
 
