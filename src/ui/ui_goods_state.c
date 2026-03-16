@@ -59,7 +59,7 @@ void ui_event_sales_btn_0(lv_event_t * e)
 
     if(event_code == LV_EVENT_CLICKED) {
         OnGoodsSalesButtonClicked(e);
-        _ui_screen_change(&ui_settings_state, LV_SCR_LOAD_ANIM_MOVE_LEFT, 500, 0, &ui_settings_state_screen_init);
+        _ui_screen_change(&ui_sales_state, LV_SCR_LOAD_ANIM_MOVE_LEFT, 500, 0, &ui_sales_state_screen_init);
     }
 }
 
