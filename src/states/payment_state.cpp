@@ -29,8 +29,13 @@ void PaymentState::Update(const uint32_t delay_ms)
 void PaymentState::Okay()
 {
     // 購入
+    // 文字列生成
+    char amount_str[7];
+    snprintf(amount_str, sizeof(amount_str), ",%d", _amounts.GetCurrentValue());
+    // 金額入力 確定
     _amounts.RegisterCurrentValue();
-    std::string csv_line_str = _goods.RegisterSelectedToSold();
+    // 登録済み商品 確定
+    std::string csv_line_str = _goods.RegisterSelectedToSold() + amount_str;
 
     // sales.json 反映
     _json_io.Write();

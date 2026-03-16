@@ -6,6 +6,7 @@ void CsvIO::Write(std::string& csv_line)
     
     if (file.size() == 0)
     {
+        file.print("時刻,");
         file.println(_goods.GetCommaSeparatedAllNames().c_str());
     }
 
