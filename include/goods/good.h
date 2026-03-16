@@ -47,6 +47,8 @@ public:
 
     const int32_t GetSoldAmountPrice();
 
+    void RegisterSelectedToSold();
+
     void IncrementSelectedNumber();
 
     void DecrementSelectedNumber();

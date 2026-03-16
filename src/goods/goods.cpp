@@ -54,6 +54,28 @@ void Goods::ResetAll()
     }
 }
 
+std::string Goods::RegisterSelectedToSold()
+{
+    std::string csv_line_str;
+    bool is_first = true;
+
+    for (Good& good : _goods)
+    {
+        // CSV用文字列生成
+        char sales_str[5];
+        const char* format_str = is_first ? "%d" : ",%d";
+        snprintf(sales_str, sizeof(sales_str), format_str, good.GetSelectedNumber());
+
+        // 売上反映
+        good.RegisterSelectedToSold();
+
+        is_first = false;
+    }
+
+    csv_line_str += "\n";
+    return csv_line_str;
+}
+
 std::string Goods::GetSelectedNamesList()
 {
     std::string str;
@@ -253,5 +275,15 @@ void Goods::DeserializeSales(JsonDocument& json_sales)
     {
         const int32_t number = json_array[i].as<int32_t>();
         _goods[i].SetSoldNumber(number);
+    }
+}
+
+void Goods::SerializeSales(JsonDocument& json_sales)
+{
+    JsonArray json_array = json_sales["goods"].as<JsonArray>();
+
+    for (Good& good : _goods)
+    {
+        json_array.add(good.GetSoldNumber());
     }
 }

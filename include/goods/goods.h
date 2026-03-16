@@ -32,6 +32,8 @@ public:
 
     void ResetAll();
 
+    std::string RegisterSelectedToSold();
+
     std::string GetSelectedNamesList();
 
     std::string GetSelectedNumbersList();
@@ -49,4 +51,6 @@ public:
     void DeserializeGoods(JsonDocument& json_goods);
 
     void DeserializeSales(JsonDocument& json_sales);
+
+    void SerializeSales(JsonDocument& json_sales);
 };

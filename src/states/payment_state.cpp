@@ -29,10 +29,16 @@ void PaymentState::Update(const uint32_t delay_ms)
 void PaymentState::Okay()
 {
     // 購入
+    _amounts.RegisterCurrentValue();
+    std::string csv_line_str = _goods.RegisterSelectedToSold();
 
     // sales.json 反映
+    _json_io.Write();
 
-    // CSV 追記
+    // CSV 書き出し
+
+    // Beep
+    M5.Speaker.tone(2000, 50);
 
     // GoodsState へ戻る
     _state_selector->BackToGoodsState();

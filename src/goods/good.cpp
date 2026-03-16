@@ -50,6 +50,12 @@ const int32_t Good::GetSoldAmountPrice()
     return _unit_price * _sold_number;
 }
 
+void Good::RegisterSelectedToSold()
+{
+    _sold_number += _selected_number;
+    _selected_number = 0;
+}
+
 void Good::IncrementSelectedNumber()
 {
     if (_selected_number++ >= 99)

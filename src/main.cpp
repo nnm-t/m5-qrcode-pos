@@ -42,7 +42,7 @@ namespace {
     StateSelector state_selector(qrcode, hmi);
     GoodsState goods_state(&state_selector, goods, clock, battery);
     AmountState amount_state(&state_selector, amounts, clock, battery);
-    PaymentState payment_state(&state_selector, goods, amounts, clock, battery);
+    PaymentState payment_state(&state_selector, goods, amounts, json_io, clock, battery);
     SettingsState settings_state(&state_selector, clock, battery);
     SalesState sales_state(&state_selector, goods, amounts, clock, battery);
 }

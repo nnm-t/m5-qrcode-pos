@@ -13,6 +13,19 @@ void Amounts::Deserialize(JsonDocument& json_sales)
     }
 }
 
+void Amounts::Serialize(JsonDocument& json_sales)
+{
+    JsonObject json_amounts = json_sales["amounts"].as<JsonObject>();
+
+    std::for_each(_values.begin(), _values.end(),
+    [&](std::map<int32_t, int32_t>::value_type pair){
+        char key[6];
+        snprintf(key, sizeof(key), "%d", pair.first);
+
+        json_amounts[key] = pair.second;
+    });
+}
+
 void Amounts::RegisterValue(const int32_t value)
 {
     // map へ反映

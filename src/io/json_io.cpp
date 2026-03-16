@@ -12,6 +12,8 @@ void JsonIO::Open(JsonDocument& json_document, const char* file_name)
     {
         _serial->printf("JSON deserialization failed: %s, %d", file_name, static_cast<uint8_t>(error.code()));
     }
+
+    file.close();
 }
 
 void JsonIO::Read()
@@ -30,5 +32,13 @@ void JsonIO::Read()
 
 void JsonIO::Write()
 {
+    File file = SD.open(sales_file_name, FILE_WRITE);
+    JsonDocument json_sales;
 
+    _goods.SerializeSales(json_sales);
+    _amounts.Serialize(json_sales);
+
+    serializeJson(json_sales, file);
+
+    file.close();
 }

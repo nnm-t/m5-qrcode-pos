@@ -20,6 +20,8 @@ public:
 
     void Deserialize(JsonDocument& json_sales);
 
+    void Serialize(JsonDocument& json_sales);
+
     void RegisterValue(const int32_t value);
 
     void RegisterCurrentValue();
