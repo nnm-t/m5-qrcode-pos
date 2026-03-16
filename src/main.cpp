@@ -17,6 +17,7 @@
 #include "ui/ui.h"
 
 #include "io/json_io.h"
+#include "io/csv_io.h"
 #include "util/clock.h"
 #include "util/battery.h"
 #include "module/qr.h"
@@ -38,11 +39,12 @@ namespace {
     Goods goods;
     Amounts amounts;
     JsonIO json_io(&Serial, goods, amounts);
+    CsvIO csv_io(goods);
 
     StateSelector state_selector(qrcode, hmi);
     GoodsState goods_state(&state_selector, goods, clock, battery);
     AmountState amount_state(&state_selector, amounts, clock, battery);
-    PaymentState payment_state(&state_selector, goods, amounts, json_io, clock, battery);
+    PaymentState payment_state(&state_selector, goods, amounts, json_io, csv_io, clock, battery);
     SettingsState settings_state(&state_selector, clock, battery);
     SalesState sales_state(&state_selector, goods, amounts, clock, battery);
 }

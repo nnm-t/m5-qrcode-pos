@@ -92,7 +92,7 @@ void GoodsState::Reset()
 
 void GoodsState::ResetAll()
 {
-    _goods.ResetAll();
+    _goods.ResetSelectedAll();
     Draw();
 }
 

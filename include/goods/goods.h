@@ -5,6 +5,7 @@
 #include <vector>
 
 #include <Arduino.h>
+#include <M5Unified.h>
 #include <ArduinoJson.h>
 
 #include "good.h"
@@ -30,7 +31,9 @@ public:
 
     const int32_t GetSoldTotalPrice();
 
-    void ResetAll();
+    void ResetSelectedAll();
+
+    std::string GetCommaSeparatedAllNames();
 
     std::string RegisterSelectedToSold();
 

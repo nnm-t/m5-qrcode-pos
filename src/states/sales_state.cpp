@@ -7,7 +7,7 @@ void SalesState::Begin()
 
     // 売上
     char sum_price[8];
-    snprintf(sum_price, sizeof(sum_price), "%d", _goods.GetSoldTotalPrice());
+    snprintf(sum_price, sizeof(sum_price), "%d", _goods.GetSoldTotalPrice() + _amounts.GetTotalValue());
     _ui_label_set_property(ui_total_price_lbl_4, _UI_LABEL_PROPERTY_TEXT, sum_price);
 
     // 金額入力

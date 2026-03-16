@@ -46,7 +46,7 @@ const int32_t Goods::GetSoldTotalPrice()
     return total_price;
 }
 
-void Goods::ResetAll()
+void Goods::ResetSelectedAll()
 {
     for (Good& good : _goods)
     {
@@ -56,24 +56,45 @@ void Goods::ResetAll()
 
 std::string Goods::RegisterSelectedToSold()
 {
-    std::string csv_line_str;
-    bool is_first = true;
+    // 時刻出力
+    m5::rtc_datetime_t date_time = M5.Rtc.getDateTime();
+    char date_time_str[32];
+    snprintf(date_time_str, sizeof (date_time_str), "%04d/%02d/%02d %02d:%02d:%02d", date_time.date.year, date_time.date.month, date_time.date.date, date_time.time.hours, date_time.time.minutes, date_time.time.seconds);
+
+    std::string csv_line_str(date_time_str);
 
     for (Good& good : _goods)
     {
         // CSV用文字列生成
         char sales_str[5];
-        const char* format_str = is_first ? "%d" : ",%d";
-        snprintf(sales_str, sizeof(sales_str), format_str, good.GetSelectedNumber());
+        snprintf(sales_str, sizeof(sales_str), ",%d", good.GetSelectedNumber());
+        csv_line_str += sales_str;
 
         // 売上反映
         good.RegisterSelectedToSold();
+    }
 
+    // 末尾に改行コードは付けない
+    return csv_line_str;
+}
+
+std::string Goods::GetCommaSeparatedAllNames()
+{
+    std::string str;
+    bool is_first = true;
+
+    for (Good& good : _goods)
+    {
+        if (!is_first)
+        {
+            str += ",";
+        }
+
+        str += good.GetName();
         is_first = false;
     }
 
-    csv_line_str += "\n";
-    return csv_line_str;
+    return str;
 }
 
 std::string Goods::GetSelectedNamesList()

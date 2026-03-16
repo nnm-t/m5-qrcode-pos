@@ -10,6 +10,7 @@
 #include "goods/goods.h"
 #include "goods/amounts.h"
 #include "io/json_io.h"
+#include "io/csv_io.h"
 #include "util/clock.h"
 #include "util/battery.h"
 
@@ -21,6 +22,7 @@ class PaymentState : public IState
     Goods& _goods;
     Amounts& _amounts;
     JsonIO& _json_io;
+    CsvIO& _csv_io;
     Clock& _clock;
 	Battery& _battery;
 
@@ -32,7 +34,7 @@ class PaymentState : public IState
     void OkayFree();
 
 public:
-    PaymentState(IStateSelector* const state_selector, Goods& goods, Amounts& amounts, JsonIO& json_io, Clock& clock, Battery& battery) : _state_selector(state_selector), _goods(goods), _amounts(amounts), _json_io(json_io), _clock(clock), _battery(battery)
+    PaymentState(IStateSelector* const state_selector, Goods& goods, Amounts& amounts, JsonIO& json_io, CsvIO& csv_io, Clock& clock, Battery& battery) : _state_selector(state_selector), _goods(goods), _amounts(amounts), _json_io(json_io), _csv_io(csv_io), _clock(clock), _battery(battery)
     {
         _instance = this;
     }

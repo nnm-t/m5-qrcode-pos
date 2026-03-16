@@ -9,7 +9,7 @@ void PaymentState::Begin()
 
     // 合計価格
     char sum_price[6];
-    snprintf(sum_price, sizeof(sum_price), "%d", _goods.GetSelectedTotalPrice());
+    snprintf(sum_price, sizeof(sum_price), "%d", _goods.GetSelectedTotalPrice() + _amounts.GetCurrentValue());
     _ui_label_set_property(ui_sum_price_lbl_2, _UI_LABEL_PROPERTY_TEXT, sum_price);
 
     // タイトル
@@ -36,10 +36,13 @@ void PaymentState::Okay()
     _json_io.Write();
 
     // CSV 書き出し
+    _csv_io.Write(csv_line_str);
 
     // Beep
     M5.Speaker.tone(2000, 50);
 
+    // 選択解除
+    _goods.ResetSelectedAll();
     // GoodsState へ戻る
     _state_selector->BackToGoodsState();
 }
