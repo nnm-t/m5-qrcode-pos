@@ -72,6 +72,8 @@ public:
 
     void OnHMIEncoderDecrement() override;
 
+    void OnHMIButton2Pressed() override;
+
     static void OnLeftButtonClicked();
 
     static void OnRightButtonClicked();

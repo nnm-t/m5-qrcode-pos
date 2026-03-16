@@ -65,12 +65,16 @@ void PaymentState::OnHMIButton1Pressed()
 {
     // Okay
     Okay();
+    // GoodsStateに戻る
+    _state_selector->BackToGoodsState();
+    _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_OUT_RIGHT, 500, 0, &ui_goods_state_screen_init);
 }
 
 void PaymentState::OnHMIButton2Pressed()
 {
     // 何もせずGoodsStateに戻る
     _state_selector->BackToGoodsState();
+    _ui_screen_change(&ui_goods_state, LV_SCR_LOAD_ANIM_OUT_RIGHT, 500, 0, &ui_goods_state_screen_init);
 }
 
 void PaymentState::OnOkayButtonClicked()
