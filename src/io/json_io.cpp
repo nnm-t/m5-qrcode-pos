@@ -32,13 +32,13 @@ void JsonIO::Read()
 
 void JsonIO::Write()
 {
-    File file = SD.open(sales_file_name, FILE_WRITE);
     JsonDocument json_sales;
 
     _goods.SerializeSales(json_sales);
     _amounts.Serialize(json_sales);
 
-    serializeJson(json_sales, file);
+    File file = SD.open(sales_file_name, FILE_WRITE);
+    serializeJsonPretty(json_sales, file);
 
     file.close();
 }

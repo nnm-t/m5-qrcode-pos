@@ -301,7 +301,7 @@ void Goods::DeserializeSales(JsonDocument& json_sales)
 
 void Goods::SerializeSales(JsonDocument& json_sales)
 {
-    JsonArray json_array = json_sales["goods"].as<JsonArray>();
+    JsonArray json_array = json_sales["goods"].to<JsonArray>();
 
     for (Good& good : _goods)
     {
