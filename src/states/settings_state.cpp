@@ -10,6 +10,8 @@ void SettingsState::Begin()
     _rtc_datetime = M5.Rtc.getDateTime();
     DrawRTCSettings();
 
+    _ui_slider_set_property(ui_blightness_sld_3, _UI_SLIDER_PROPERTY_VALUE, GetBrightness());
+
     // MACアドレス表示
     uint8_t mac_wifi[6];
     esp_read_mac(mac_wifi, ESP_MAC_WIFI_STA);
@@ -286,6 +288,16 @@ void SettingsState::ApplySettings()
     M5.Rtc.setDateTime(_rtc_datetime);
 }
 
+const uint8_t SettingsState::GetBrightness()
+{
+    return _brightness.GetValue();
+}
+
+void SettingsState::SetBrightness(const uint8_t value)
+{
+    _brightness.SetValue(value);
+}
+
 void SettingsState::CursorLeft()
 {
     switch (_rtc_current)
@@ -392,4 +404,10 @@ void SettingsState::OnHHLabelClicked()
 void SettingsState::OnMM1LabelClicked()
 {
     _instance->ChangeRTCCurrent(RTCSettings::Minutes);
+}
+
+void SettingsState::OnBrightnessSliderValueChanged()
+{
+    const uint8_t value = static_cast<uint8_t>(lv_slider_get_value(ui_blightness_sld_3));
+    _instance->SetBrightness(value);
 }

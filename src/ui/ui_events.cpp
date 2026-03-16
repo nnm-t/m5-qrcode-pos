@@ -112,6 +112,7 @@ void OnPaymentOkayButtonClicked(lv_event_t * e)
 void OnSettingsBrightnessValueChanged(lv_event_t * e)
 {
 	// Your code here
+	SettingsState::OnBrightnessSliderValueChanged();
 }
 
 void OnSettingsBackButtonClicked(lv_event_t * e)

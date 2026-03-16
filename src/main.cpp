@@ -20,6 +20,7 @@
 #include "io/csv_io.h"
 #include "util/clock.h"
 #include "util/battery.h"
+#include "util/brightness.h"
 #include "module/qr.h"
 #include "module/hmi.h"
 
@@ -35,6 +36,7 @@ namespace {
     HMI hmi(module_hmi);
     Clock clock(duration_ms);
     Battery battery(duration_ms);
+    Brightness brightness;
 
     Goods goods;
     Amounts amounts;
@@ -45,7 +47,7 @@ namespace {
     GoodsState goods_state(&state_selector, goods, clock, battery);
     AmountState amount_state(&state_selector, amounts, clock, battery);
     PaymentState payment_state(&state_selector, goods, amounts, json_io, csv_io, clock, battery);
-    SettingsState settings_state(&state_selector, clock, battery);
+    SettingsState settings_state(&state_selector, clock, battery, brightness);
     SalesState sales_state(&state_selector, goods, amounts, clock, battery);
 }
 
@@ -55,6 +57,7 @@ void setup()
     M5.begin(m5_config);
     SD.begin(sd_cs_pin);
 
+    brightness.Begin();
     json_io.Read();
 
     lv_my_init();

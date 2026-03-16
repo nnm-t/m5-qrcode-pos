@@ -12,6 +12,7 @@
 #include "i_state_selector.h"
 #include "util/clock.h"
 #include "util/battery.h"
+#include "util/brightness.h"
 
 enum class RTCSettings : uint8_t
 {
@@ -29,6 +30,7 @@ class SettingsState : public IState
     IStateSelector* const _state_selector;
     Clock& _clock;
 	Battery& _battery;
+    Brightness& _brightness;
 
     RTCSettings _rtc_current = RTCSettings::Years;
     m5::rtc_datetime_t _rtc_datetime = m5::rtc_datetime_t();
@@ -46,8 +48,12 @@ class SettingsState : public IState
 
     void ApplySettings();
 
+    const uint8_t GetBrightness();
+
+    void SetBrightness(const uint8_t value);
+
 public:
-    SettingsState(IStateSelector* const state_selector, Clock& clock, Battery& battery) : _state_selector(state_selector), _clock(clock), _battery(battery)
+    SettingsState(IStateSelector* const state_selector, Clock& clock, Battery& battery, Brightness& brightness) : _state_selector(state_selector), _clock(clock), _battery(battery), _brightness(brightness)
     {
         _instance = this;
     }
@@ -85,4 +91,6 @@ public:
     static void OnHHLabelClicked();
 
     static void OnMM1LabelClicked();
+
+    static void OnBrightnessSliderValueChanged();
 };
