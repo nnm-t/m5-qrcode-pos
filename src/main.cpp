@@ -4,6 +4,9 @@
 
 #include "gfx/lv_init.h"
 
+#include "goods/goods.h"
+#include "goods/amounts.h"
+
 #include "states/state_selector.h"
 #include "states/goods_state.h"
 #include "states/amount_state.h"
@@ -32,14 +35,16 @@ namespace {
     Clock clock(duration_ms);
     Battery battery(duration_ms);
 
-    StateSelector state_selector(qrcode, hmi);
-    GoodsState goods_state(&state_selector, clock, battery);
-    AmountState amount_state(&state_selector, clock, battery);
-    PaymentState payment_state(&state_selector, goods_state, amount_state, clock, battery);
-    SettingsState settings_state(&state_selector, clock, battery);
-    SalesState sales_state(&state_selector, goods_state, amount_state, clock, battery);
+    Goods goods;
+    Amounts amounts;
+    JsonIO json_io(&Serial, goods, amounts);
 
-    JsonIO json_io(&Serial, goods_state, amount_state);
+    StateSelector state_selector(qrcode, hmi);
+    GoodsState goods_state(&state_selector, goods, clock, battery);
+    AmountState amount_state(&state_selector, amounts, clock, battery);
+    PaymentState payment_state(&state_selector, goods, amounts, clock, battery);
+    SettingsState settings_state(&state_selector, clock, battery);
+    SalesState sales_state(&state_selector, goods, amounts, clock, battery);
 }
 
 void setup()

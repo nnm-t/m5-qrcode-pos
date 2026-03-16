@@ -19,16 +19,13 @@ void JsonIO::Read()
     JsonDocument json_goods;
     Open(json_goods, goods_file_name);
 
-    JsonArray json_goods_array = json_goods["goods"].as<JsonArray>();
-    _goods_state.Deserialize(json_goods_array);
+    _goods.DeserializeGoods(json_goods);
 
     JsonDocument json_sales;
     Open(json_sales, sales_file_name);
 
-    JsonArray json_sales_goods = json_sales["goods"].as<JsonArray>();
-
-    JsonObject json_sales_amount = json_sales["amounts"].as<JsonObject>();
-    _amount_state.Deserialize(json_sales_amount);
+    _goods.DeserializeSales(json_sales);
+    _amounts.Deserialize(json_sales);
 }
 
 void JsonIO::Write()

@@ -12,21 +12,21 @@
 
 #include "i_state.h"
 #include "i_state_selector.h"
+#include "goods/goods.h"
 #include "util/clock.h"
 #include "util/battery.h"
-#include "good.h"
 
 class GoodsState : public IState
 {
 	static GoodsState* _instance;
 
-	std::vector<Good> _goods;
-	std::unordered_map<std::string, size_t> _goods_hash;
-	std::vector<Good>::iterator _current_good;
 
 	IStateSelector* const _state_selector;
+	Goods& _goods;
 	Clock& _clock;
 	Battery& _battery;
+
+	std::vector<Good>::iterator _current_good;
 
 	lv_obj_t* _ui_time = nullptr;
 	lv_obj_t* _ui_battery = nullptr;
@@ -34,11 +34,9 @@ class GoodsState : public IState
 	void Draw();
 
 public:
-	GoodsState(IStateSelector* const state_selector, Clock& clock, Battery& battery) : _state_selector(state_selector), _clock(clock), _battery(battery)
+	GoodsState(IStateSelector* const state_selector, Goods& goods, Clock& clock, Battery& battery) : _state_selector(state_selector), _goods(goods), _clock(clock), _battery(battery)
 	{
-		_goods = std::vector<Good>();
-		_goods_hash = std::unordered_map<std::string, size_t>();
-		_current_good = _goods.begin();
+		_current_good = _goods.GetBeginIterator();
 		_instance = this;
 	}
 
@@ -60,15 +58,7 @@ public:
 
 	const int32_t GetSumPrice();
 
-	const std::string GetGoodsNames();
-
-	const std::string GetGoodsNumbers();
-
-	const std::string GetGoodsPrices();
-
 	void OnQRCodeScan(std::string& result);
-
-	void Deserialize(JsonArray& json_goods);
 
 	void OnHMIEncoderIncrement() override;
 

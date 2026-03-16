@@ -1,4 +1,4 @@
-#include "good.h"
+#include "goods/good.h"
 
 const std::string& Good::GetName() const
 {

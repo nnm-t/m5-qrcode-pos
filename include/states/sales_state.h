@@ -7,16 +7,16 @@
 
 #include "i_state.h"
 #include "i_state_selector.h"
-#include "goods_state.h"
-#include "amount_state.h"
+#include "goods/goods.h"
+#include "goods/amounts.h"
 #include "util/clock.h"
 #include "util/battery.h"
 
 class SalesState : public IState
 {
     IStateSelector* const _state_selector;
-    GoodsState& _goods_state;
-    AmountState& _amount_state;
+    Goods& _goods;
+    Amounts& _amounts;
 
     Clock& _clock;
     Battery& _battery;
@@ -25,7 +25,7 @@ class SalesState : public IState
 	lv_obj_t* _ui_battery = nullptr;
 
 public:
-    SalesState(IStateSelector* const state_selector, GoodsState& goods_state, AmountState& amount_state, Clock& clock, Battery& battery) : _state_selector(state_selector), _goods_state(goods_state), _amount_state(amount_state), _clock(clock), _battery(battery)
+    SalesState(IStateSelector* const state_selector, Goods& goods, Amounts& amounts, Clock& clock, Battery& battery) : _state_selector(state_selector), _goods(goods), _amounts(amounts), _clock(clock), _battery(battery)
     {
 
     }
