@@ -28,6 +28,12 @@ void Amounts::Serialize(JsonDocument& json_sales)
 
 void Amounts::RegisterValue(const int32_t value)
 {
+    // 0円は登録しない
+    if (value == 0)
+    {
+        return;
+    }
+
     // map へ反映
     if (_values.find(value) == _values.end())
     {
