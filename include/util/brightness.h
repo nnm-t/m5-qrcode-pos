@@ -5,7 +5,7 @@
 
 class Brightness
 {
-    static constexpr const uint8_t default_value = 63;
+    static constexpr const uint8_t default_value = 127;
 
     uint8_t _value = default_value;
 
