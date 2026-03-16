@@ -76,9 +76,9 @@ M5Stack Faces を使用する拙作 [m5stack-sokubai-pos](https://github.com/nnm
 - [M5Stack Core2](https://docs.m5stack.com/ja/core/core2)
   - 基本構成が同一の [Core2 v1.1](https://docs.m5stack.com/ja/core/Core2%20v1.1)/[Core2 For AWS](https://docs.m5stack.com/ja/core/core2_for_aws) 等にも対応
   - [CoreS3](https://docs.m5stack.com/ja/core/CoreS3)/[CoreS3 SE](https://docs.m5stack.com/ja/core/M5CoreS3%20SE)/[CoreS3 Lite](https://docs.m5stack.com/ja/core/CoreS3-Lite) 等での動作も考慮 (未確認)
-- [Module HMI](https://docs.m5stack.com/ja/module/HMI%20Module)
-- [Moodule13.2 QRCode](https://docs.m5stack.com/ja/module/Module13.2_QRCode)
-- [Base AAA](https://docs.m5stack.com/ja/base/base_aaa)
+- [Module HMI](https://docs.m5stack.com/ja/module/HMI%20Module) (オプション)
+- [Moodule13.2 QRCode](https://docs.m5stack.com/ja/module/Module13.2_QRCode) (オプション)
+- [Base AAA](https://docs.m5stack.com/ja/base/base_aaa) (オプション)
   - Base をこれに交換すると単4電池4本で長時間駆動が可能
   - CoreS3 シリーズでは満充電でも起動しないので、起動時のみ USB から給電する
 

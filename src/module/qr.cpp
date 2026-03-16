@@ -11,10 +11,20 @@ void QR::Begin(std::function<void(std::string&)> scan_result_callback, HardwareS
     config.serial = serial;
     _module.setConfig(config);
 
+    // 存在確認
+    int8_t count = 6;
     while (!_module.begin())
     {
         delay(100);
+
+        if (--count <= 0)
+        {
+            _is_found = false;
+            return;
+        }
     }
+
+    _is_found = true;
 
     _module.setFillLightMode(QRCodeM14::FILL_LIGHT_ON_DECODE);
     _module.setPosLightMode(QRCodeM14::POS_LIGHT_ON_DECODE);
@@ -24,6 +34,11 @@ void QR::Begin(std::function<void(std::string&)> scan_result_callback, HardwareS
 
 void QR::Enable()
 {
+    if (!_is_found)
+    {
+        return;
+    }
+
     _module.setTriggerLevel(false);
 
     delay(20);
@@ -33,6 +48,11 @@ void QR::Enable()
 
 void QR::Update()
 {
+    if (!_is_found)
+    {
+        return;
+    }
+
     _module.update();
 
     if (!_module.available())

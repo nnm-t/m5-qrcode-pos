@@ -23,6 +23,8 @@ class QR
     M5ModuleQRCode& _module;
     std::function<void(std::string&)> _scan_result_callback = nullptr;
 
+    bool _is_found = false;
+
 public:
     QR(M5ModuleQRCode& module) : _module(module)
     {

@@ -2,6 +2,16 @@
 
 void HMI::Begin(TwoWire* wire, const uint8_t sda, const uint8_t scl, const uint32_t speed)
 {
+    // 存在確認
+    wire->beginTransmission(HMI_ADDR);
+    if (wire->endTransmission() != 0)
+    {
+        _is_found = false;
+        return;
+    }
+
+    _is_found = true;
+
     _module.begin(wire, HMI_ADDR, sda, scl, speed);
 
     _module.resetCounter();
@@ -9,6 +19,11 @@ void HMI::Begin(TwoWire* wire, const uint8_t sda, const uint8_t scl, const uint3
 
 void HMI::Update()
 {
+    if (!_is_found)
+    {
+        return;
+    }
+
     const bool is_button_s_press = _module.getButtonS();
     const bool is_button_1_press = _module.getButton1();
     const bool is_button_2_press = _module.getButton2();
@@ -92,10 +107,20 @@ void HMI::Update()
 
 void HMI::SetLEDOn(const HMILED led)
 {
+    if (!_is_found)
+    {
+        return;
+    }
+
     _module.setLEDStatus(static_cast<uint8_t>(led), led_status_on);
 }
 
 void HMI::SetLEDOff(const HMILED led)
 {
+    if (!_is_found)
+    {
+        return;
+    }
+
     _module.setLEDStatus(static_cast<uint8_t>(led), led_status_off);
 }

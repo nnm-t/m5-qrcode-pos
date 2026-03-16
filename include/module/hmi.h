@@ -31,6 +31,7 @@ class HMI
 
     M5ModuleHMI& _module;
 
+    bool _is_found = false;
     int32_t _encoder_value = 0;
     bool _is_button_s_pressed = false;
     bool _is_button_1_pressed = false;
