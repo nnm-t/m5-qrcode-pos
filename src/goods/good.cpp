@@ -20,33 +20,53 @@ const uint32_t Good::GetUnitPrice() const
     return _unit_price;
 }
 
-const int32_t Good::GetNumber()
+const int32_t Good::GetSelectedNumber()
 {
-    return _number;
+    return _selected_number;
 }
 
-const int32_t Good::GetAmountPrice()
+const int32_t Good::GetSoldNumber()
 {
-    return _unit_price * _number;
+    return _sold_number;
 }
 
-void Good::IncrementNumber()
+void Good::SetSoldNumber(const int32_t number)
 {
-    if (_number++ >= 99)
+    _sold_number = number;
+}
+
+void Good::AddSoldNumber(const int32_t number)
+{
+    _sold_number += number;
+}
+
+const int32_t Good::GetSelectedAmountPrice()
+{
+    return _unit_price * _selected_number;
+}
+
+const int32_t Good::GetSoldAmountPrice()
+{
+    return _unit_price * _sold_number;
+}
+
+void Good::IncrementSelectedNumber()
+{
+    if (_selected_number++ >= 99)
     {
         return;
     }
 }
 
-void Good::DecrementNumber()
+void Good::DecrementSelectedNumber()
 {
-    if (_number-- <= -99)
+    if (_selected_number-- <= -99)
     {
         return;
     }
 }
 
-void Good::ResetNumber()
+void Good::ResetSelectedNumber()
 {
-    _number = 0;
+    _selected_number = 0;
 }

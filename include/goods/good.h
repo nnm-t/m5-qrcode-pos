@@ -13,7 +13,8 @@ class Good
     const std::string _code;
     const uint32_t _unit_price;
 
-    int32_t _number = 0;
+    int32_t _selected_number = 0;
+    int32_t _sold_number = 0;
 
 public:
     Good(const std::string& name, const std::string& image_path, const std::string& code, const uint32_t unit_price) : _name(name), _image_path(image_path), _code(code), _unit_price(unit_price)
@@ -34,13 +35,21 @@ public:
 
     const uint32_t GetUnitPrice() const;
 
-    const int32_t GetNumber();
+    const int32_t GetSelectedNumber();
 
-    const int32_t GetAmountPrice();
+    const int32_t GetSoldNumber();
 
-    void IncrementNumber();
+    void SetSoldNumber(const int32_t number);
 
-    void DecrementNumber();
+    void AddSoldNumber(const int32_t number);
 
-    void ResetNumber();
+    const int32_t GetSelectedAmountPrice();
+
+    const int32_t GetSoldAmountPrice();
+
+    void IncrementSelectedNumber();
+
+    void DecrementSelectedNumber();
+
+    void ResetSelectedNumber();
 };

@@ -38,17 +38,17 @@ void GoodsState::Draw()
 
     // 数量
     char number_str[3];
-    snprintf(number_str, sizeof(number_str), "%2d", _current_good->GetNumber());
+    snprintf(number_str, sizeof(number_str), "%2d", _current_good->GetSelectedNumber());
     _ui_label_set_property(ui_number_lbl_0, _UI_LABEL_PROPERTY_TEXT, number_str);
 
     // 合計数量
     char total_number_str[4];
-    snprintf(total_number_str, sizeof(total_number_str), "%3d", _goods.GetTotalNumber());
+    snprintf(total_number_str, sizeof(total_number_str), "%3d", _goods.GetSelectedTotalNumber());
     _ui_label_set_property(ui_total_number_lbl_0, _UI_LABEL_PROPERTY_TEXT, total_number_str);
 
     // 合計
     char total_price_str[6];
-    snprintf(total_price_str, sizeof(total_price_str), "%5d", _goods.GetTotalPrice());
+    snprintf(total_price_str, sizeof(total_price_str), "%5d", _goods.GetSelectedTotalPrice());
     _ui_label_set_property(ui_total_price_lbl_0, _UI_LABEL_PROPERTY_TEXT, total_price_str);
 }
 
@@ -74,19 +74,19 @@ void GoodsState::Prev()
 
 void GoodsState::Plus()
 {
-    _current_good->IncrementNumber();
+    _current_good->IncrementSelectedNumber();
     Draw();
 }
 
 void GoodsState::Minus()
 {
-    _current_good->DecrementNumber();
+    _current_good->DecrementSelectedNumber();
     Draw();
 }
 
 void GoodsState::Reset()
 {
-    _current_good->ResetNumber();
+    _current_good->ResetSelectedNumber();
     Draw();
 }
 
@@ -94,11 +94,6 @@ void GoodsState::ResetAll()
 {
     _goods.ResetAll();
     Draw();
-}
-
-const int32_t GoodsState::GetSumPrice()
-{
-    return _goods.GetTotalPrice();
 }
 
 void GoodsState::OnQRCodeScan(std::string& result)

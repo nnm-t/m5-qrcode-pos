@@ -56,8 +56,6 @@ public:
 	
 	void ResetAll();
 
-	const int32_t GetSumPrice();
-
 	void OnQRCodeScan(std::string& result);
 
 	void OnHMIEncoderIncrement() override;

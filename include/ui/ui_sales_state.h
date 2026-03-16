@@ -23,7 +23,7 @@ extern lv_obj_t * ui_label_4_0;
 extern lv_obj_t * ui_amount_price_lbl_4;
 extern lv_obj_t * ui_label_4_1;
 extern lv_obj_t * ui_label_4_2;
-extern lv_obj_t * ui_total_price_lbl_1;
+extern lv_obj_t * ui_total_price_lbl_4;
 extern lv_obj_t * ui_label_4_3;
 extern lv_obj_t * ui_goods_list_4;
 extern lv_obj_t * ui_goods_list_title_lbl_4;

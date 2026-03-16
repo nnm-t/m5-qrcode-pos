@@ -9,7 +9,7 @@
 
 class Amounts
 {
-    std::map<std::string, int32_t> _values = std::map<std::string, int32_t>();
+    std::map<int32_t, int32_t> _values = std::map<int32_t, int32_t>();
     int32_t _current_value = 0;
 
 public:
@@ -27,6 +27,8 @@ public:
     const int32_t GetCurrentValue();
 
     void SetCurrentValue(const int32_t value);
+
+    const int32_t GetTotalValue();
 
     std::string GetAmountsList();
 

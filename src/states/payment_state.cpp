@@ -9,15 +9,15 @@ void PaymentState::Begin()
 
     // 合計価格
     char sum_price[6];
-    snprintf(sum_price, sizeof(sum_price), "%d", _goods.GetTotalPrice());
+    snprintf(sum_price, sizeof(sum_price), "%d", _goods.GetSelectedTotalPrice());
     _ui_label_set_property(ui_sum_price_lbl_2, _UI_LABEL_PROPERTY_TEXT, sum_price);
 
     // タイトル
-    _ui_label_set_property(ui_goods_list_title_lbl_2, _UI_LABEL_PROPERTY_TEXT, _goods.GetNamesList().c_str());
+    _ui_label_set_property(ui_goods_list_title_lbl_2, _UI_LABEL_PROPERTY_TEXT, _goods.GetSelectedNamesList().c_str());
     // 数量
-    _ui_label_set_property(ui_goods_list_number_lbl_2, _UI_LABEL_PROPERTY_TEXT, _goods.GetNumbersList().c_str());
+    _ui_label_set_property(ui_goods_list_number_lbl_2, _UI_LABEL_PROPERTY_TEXT, _goods.GetSelectedNumbersList().c_str());
     // 品目別価格
-    _ui_label_set_property(ui_goods_list_price_lbl_2, _UI_LABEL_PROPERTY_TEXT, _goods.GetPricesList().c_str());
+    _ui_label_set_property(ui_goods_list_price_lbl_2, _UI_LABEL_PROPERTY_TEXT, _goods.GetSelectedPricesList().c_str());
 }
 
 void PaymentState::Update(const uint32_t delay_ms)
@@ -41,7 +41,7 @@ void PaymentState::Okay()
 void PaymentState::OkayFree()
 {
     // 合計金額分の値を金額入力でマイナス
-    _amounts.RegisterValue(_goods.GetTotalPrice() * -1);
+    _amounts.RegisterValue(_goods.GetSelectedTotalPrice() * -1);
 
     // 購入
     Okay();

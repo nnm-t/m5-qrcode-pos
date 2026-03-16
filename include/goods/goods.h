@@ -24,17 +24,25 @@ public:
 
     std::vector<Good>::iterator GetEndIterator();
 
-    const int32_t GetTotalNumber();
+    const int32_t GetSelectedTotalNumber();
 
-    const int32_t GetTotalPrice();
+    const int32_t GetSelectedTotalPrice();
+
+    const int32_t GetSoldTotalPrice();
 
     void ResetAll();
 
-    std::string GetNamesList();
+    std::string GetSelectedNamesList();
 
-    std::string GetNumbersList();
+    std::string GetSelectedNumbersList();
 
-    std::string GetPricesList();
+    std::string GetSelectedPricesList();
+
+    std::string GetSoldNamesList();
+
+    std::string GetSoldNumbersList();
+
+    std::string GetSoldPricesList();
 
     std::vector<Good>::iterator FindByCode(std::string& code);
 

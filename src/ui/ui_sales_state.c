@@ -14,7 +14,7 @@ lv_obj_t * ui_label_4_0 = NULL;
 lv_obj_t * ui_amount_price_lbl_4 = NULL;
 lv_obj_t * ui_label_4_1 = NULL;
 lv_obj_t * ui_label_4_2 = NULL;
-lv_obj_t * ui_total_price_lbl_1 = NULL;
+lv_obj_t * ui_total_price_lbl_4 = NULL;
 lv_obj_t * ui_label_4_3 = NULL;
 lv_obj_t * ui_goods_list_4 = NULL;
 lv_obj_t * ui_goods_list_title_lbl_4 = NULL;
@@ -137,18 +137,18 @@ void ui_sales_state_screen_init(void)
                                            _ui_theme_alpha_white);
     lv_obj_set_style_text_font(ui_label_4_2, &ui_font_noto_sans, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_total_price_lbl_1 = lv_label_create(ui_sales_4);
-    lv_obj_set_width(ui_total_price_lbl_1, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_total_price_lbl_1, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_total_price_lbl_1, -48);
-    lv_obj_set_y(ui_total_price_lbl_1, 72);
-    lv_obj_set_align(ui_total_price_lbl_1, LV_ALIGN_RIGHT_MID);
-    lv_label_set_text(ui_total_price_lbl_1, "0000000");
-    ui_object_set_themeable_style_property(ui_total_price_lbl_1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,
+    ui_total_price_lbl_4 = lv_label_create(ui_sales_4);
+    lv_obj_set_width(ui_total_price_lbl_4, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_total_price_lbl_4, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_total_price_lbl_4, -48);
+    lv_obj_set_y(ui_total_price_lbl_4, 72);
+    lv_obj_set_align(ui_total_price_lbl_4, LV_ALIGN_RIGHT_MID);
+    lv_label_set_text(ui_total_price_lbl_4, "0000000");
+    ui_object_set_themeable_style_property(ui_total_price_lbl_4, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,
                                            _ui_theme_color_yellow_light_1);
-    ui_object_set_themeable_style_property(ui_total_price_lbl_1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_OPA,
+    ui_object_set_themeable_style_property(ui_total_price_lbl_4, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_OPA,
                                            _ui_theme_alpha_yellow_light_1);
-    lv_obj_set_style_text_font(ui_total_price_lbl_1, &ui_font_dseg7_20pt, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_total_price_lbl_4, &ui_font_dseg7_20pt, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_label_4_3 = lv_label_create(ui_sales_4);
     lv_obj_set_height(ui_label_4_3, 24);
@@ -234,7 +234,7 @@ void ui_sales_state_screen_destroy(void)
     ui_amount_price_lbl_4 = NULL;
     ui_label_4_1 = NULL;
     ui_label_4_2 = NULL;
-    ui_total_price_lbl_1 = NULL;
+    ui_total_price_lbl_4 = NULL;
     ui_label_4_3 = NULL;
     ui_goods_list_4 = NULL;
     ui_goods_list_title_lbl_4 = NULL;
