@@ -35,12 +35,14 @@ void AmountState::GetAmountValue()
 
 void AmountState::OnHMIButton1Pressed()
 {
-    // 桁変更
+    // 桁変更 (1000の位)
+    lv_spinbox_set_cursor_pos(ui_amount_price_spn_1, 3 - 0);
 }
 
 void AmountState::OnHMIButton2Pressed()
 {
-    // 桁変更
+    // 桁変更 (100の位)
+    lv_spinbox_set_cursor_pos(ui_amount_price_spn_1, 3 - 1);
 }
 
 void AmountState::OnHMIEncoderIncrement()
