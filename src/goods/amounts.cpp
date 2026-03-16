@@ -50,6 +50,9 @@ void Amounts::RegisterValue(const int32_t value)
 void Amounts::RegisterCurrentValue()
 {
     RegisterValue(_current_value);
+
+    // Reset Value
+    _current_value = 0;
 }
 
 const int32_t Amounts::GetCurrentValue()

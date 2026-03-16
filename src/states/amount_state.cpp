@@ -7,7 +7,8 @@ void AmountState::Begin()
     _ui_time = ui_comp_get_child(ui_header_1, UI_COMP_HEADER_TIME_LBL);
     _ui_battery = ui_comp_get_child(ui_header_1, UI_COMP_HEADER_BATTERY_IMG);
 
-    GetAmountValue();
+    lv_spinbox_set_value(ui_amount_price_spn_1, _amounts.GetCurrentValue());
+
     DrawList();
 }
 
