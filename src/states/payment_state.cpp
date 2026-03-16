@@ -8,7 +8,7 @@ void PaymentState::Begin()
     _ui_battery = ui_comp_get_child(ui_header_2, UI_COMP_HEADER_BATTERY_IMG);
 
     // 合計価格
-    char sum_price[6];
+    char sum_price[7];
     snprintf(sum_price, sizeof(sum_price), "%d", _goods.GetSelectedTotalPrice() + _amounts.GetCurrentValue());
     _ui_label_set_property(ui_sum_price_lbl_2, _UI_LABEL_PROPERTY_TEXT, sum_price);
 

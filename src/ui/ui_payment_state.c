@@ -192,32 +192,30 @@ void ui_payment_state_screen_init(void)
     ui_label_2_0 = lv_label_create(ui_payment_state);
     lv_obj_set_width(ui_label_2_0, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_label_2_0, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_label_2_0, 288);
-    lv_obj_set_y(ui_label_2_0, -56);
+    lv_obj_set_x(ui_label_2_0, 24);
+    lv_obj_set_y(ui_label_2_0, -72);
     lv_obj_set_align(ui_label_2_0, LV_ALIGN_LEFT_MID);
     lv_label_set_text(ui_label_2_0, "お会計");
     lv_obj_set_style_text_font(ui_label_2_0, &ui_font_noto_sans, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_transform_rotation(ui_label_2_0, 1800, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_sum_price_lbl_2 = lv_label_create(ui_payment_state);
     lv_obj_set_width(ui_sum_price_lbl_2, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_sum_price_lbl_2, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_sum_price_lbl_2, 216);
-    lv_obj_set_y(ui_sum_price_lbl_2, -48);
-    lv_obj_set_align(ui_sum_price_lbl_2, LV_ALIGN_LEFT_MID);
-    lv_label_set_text(ui_sum_price_lbl_2, "00000");
+    lv_obj_set_x(ui_sum_price_lbl_2, -48);
+    lv_obj_set_y(ui_sum_price_lbl_2, -72);
+    lv_obj_set_align(ui_sum_price_lbl_2, LV_ALIGN_RIGHT_MID);
+    lv_label_set_text(ui_sum_price_lbl_2, "000000");
     ui_object_set_themeable_style_property(ui_sum_price_lbl_2, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,
                                            _ui_theme_color_yellow_light_1);
     ui_object_set_themeable_style_property(ui_sum_price_lbl_2, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_OPA,
                                            _ui_theme_alpha_yellow_light_1);
     lv_obj_set_style_text_font(ui_sum_price_lbl_2, &ui_font_dseg7_32pt, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_transform_rotation(ui_sum_price_lbl_2, 1800, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_label_2_1 = lv_label_create(ui_payment_state);
     lv_obj_set_width(ui_label_2_1, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_label_2_1, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_label_2_1, 84);
-    lv_obj_set_y(ui_label_2_1, -54);
+    lv_obj_set_x(ui_label_2_1, 272);
+    lv_obj_set_y(ui_label_2_1, -72);
     lv_obj_set_align(ui_label_2_1, LV_ALIGN_LEFT_MID);
     lv_label_set_text(ui_label_2_1, "円");
     ui_object_set_themeable_style_property(ui_label_2_1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_COLOR,
@@ -225,7 +223,6 @@ void ui_payment_state_screen_init(void)
     ui_object_set_themeable_style_property(ui_label_2_1, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_OPA,
                                            _ui_theme_alpha_yellow_light_1);
     lv_obj_set_style_text_font(ui_label_2_1, &ui_font_noto_sans, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_transform_rotation(ui_label_2_1, 1800, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     lv_obj_add_event_cb(ui_back_btn_2, ui_event_back_btn_2, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_free_btn_2, ui_event_free_btn_2, LV_EVENT_ALL, NULL);
