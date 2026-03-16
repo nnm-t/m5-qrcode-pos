@@ -31,8 +31,6 @@ class AmountState : public IState
 
     void DrawList();
 
-    void AddAmountValue();
-
     void GetAmountValue();
 
 public:
@@ -44,8 +42,6 @@ public:
     void Begin() override;
 
     void Update(const uint32_t delay_ms) override;
-
-    void OnHMIButtonSPressed() override;
 
     void OnHMIButton1Pressed() override;
 

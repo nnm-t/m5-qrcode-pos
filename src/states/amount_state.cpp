@@ -25,10 +25,6 @@ void AmountState::DrawList()
     _ui_label_set_property(ui_goods_list_price_lbl_1, _UI_LABEL_PROPERTY_TEXT, _amounts.GetSubtotalsList().c_str());
 }
 
-void AmountState::AddAmountValue()
-{
-    _amounts.RegisterCurrentValue();
-}
 
 void AmountState::GetAmountValue()
 {
@@ -36,22 +32,14 @@ void AmountState::GetAmountValue()
     _amounts.SetCurrentValue(value);
 }
 
-void AmountState::OnHMIButtonSPressed()
-{
-
-}
-
 void AmountState::OnHMIButton1Pressed()
 {
-    AddAmountValue();
-    // PaymentState へ移動
-    _state_selector->GoToPaymentState();
+    // 桁変更
 }
 
 void AmountState::OnHMIButton2Pressed()
 {
-    // GoodsState へ戻る
-    _state_selector->BackToGoodsState();
+    // 桁変更
 }
 
 void AmountState::OnHMIEncoderIncrement()
