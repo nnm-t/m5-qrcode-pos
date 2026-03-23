@@ -10,6 +10,8 @@
 
 #include "goods/amounts.h"
 
+#include "ui/ui.h"
+#include "ui/ui_helpers.h"
 #include "ui/ui_amount_state.h"
 
 #include "i_state.h"

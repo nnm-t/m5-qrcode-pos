@@ -40,7 +40,7 @@ namespace {
 
     Goods goods;
     Amounts amounts;
-    JsonIO json_io(&Serial, goods, amounts);
+    JsonIO json_io(goods, amounts);
     CsvIO csv_io(goods);
 
     StateSelector state_selector(qrcode, hmi);

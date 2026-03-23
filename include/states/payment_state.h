@@ -3,6 +3,8 @@
 #include <Arduino.h>
 #include <lvgl.h>
 
+#include "ui/ui.h"
+#include "ui/ui_helpers.h"
 #include "ui/ui_payment_state.h"
 
 #include "i_state.h"

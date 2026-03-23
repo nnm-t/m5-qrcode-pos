@@ -8,6 +8,8 @@
 #include <lvgl.h>
 #include <ArduinoJson.h>
 
+#include "ui/ui.h"
+#include "ui/ui_helpers.h"
 #include "ui/ui_goods_state.h"
 
 #include "i_state.h"

@@ -10,7 +10,10 @@ void JsonIO::Open(JsonDocument& json_document, const char* file_name)
 
     if (error != DeserializationError::Code::Ok)
     {
-        _serial->printf("JSON deserialization failed: %s, %d", file_name, static_cast<uint8_t>(error.code()));
+        // GoodsStateのタイトルにエラーメッセージ表示
+        char error_str[32];
+        snprintf(error_str, sizeof(error_str), "JSON読込失敗: %d", static_cast<uint8_t>(error.code()));
+        _ui_label_set_property(ui_title_lbl_0, _UI_LABEL_PROPERTY_TEXT, error_str);
     }
 
     file.close();

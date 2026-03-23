@@ -12,7 +12,7 @@ void QR::Begin(std::function<void(std::string&)> scan_result_callback, HardwareS
     _module.setConfig(config);
 
     // 存在確認
-    int8_t count = 6;
+    int8_t count = 3;
     while (!_module.begin())
     {
         delay(100);
