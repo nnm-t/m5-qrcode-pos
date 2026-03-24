@@ -15,6 +15,8 @@
 #include "i_state.h"
 #include "i_state_selector.h"
 #include "goods/goods.h"
+#include "goods/amounts.h"
+#include "io/json_serial.h"
 #include "util/clock.h"
 #include "util/battery.h"
 
@@ -25,6 +27,8 @@ class GoodsState : public IState
 
 	IStateSelector* const _state_selector;
 	Goods& _goods;
+	Amounts& _amounts;
+	JsonSerial& _json_serial;
 	Clock& _clock;
 	Battery& _battery;
 
@@ -36,7 +40,7 @@ class GoodsState : public IState
 	void Draw();
 
 public:
-	GoodsState(IStateSelector* const state_selector, Goods& goods, Clock& clock, Battery& battery) : _state_selector(state_selector), _goods(goods), _clock(clock), _battery(battery)
+	GoodsState(IStateSelector* const state_selector, Goods& goods, Amounts& amounts, JsonSerial& json_serial, Clock& clock, Battery& battery) : _state_selector(state_selector), _goods(goods), _amounts(amounts), _json_serial(json_serial), _clock(clock), _battery(battery)
 	{
 		_current_good = _goods.GetBeginIterator();
 		_instance = this;

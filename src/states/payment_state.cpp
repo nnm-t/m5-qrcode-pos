@@ -18,6 +18,8 @@ void PaymentState::Begin()
     _ui_label_set_property(ui_goods_list_number_lbl_2, _UI_LABEL_PROPERTY_TEXT, _goods.GetSelectedNumbersList().c_str());
     // 品目別価格
     _ui_label_set_property(ui_goods_list_price_lbl_2, _UI_LABEL_PROPERTY_TEXT, _goods.GetSelectedPricesList().c_str());
+
+    _json_serial.SendTotalPrice();
 }
 
 void PaymentState::Update(const uint32_t delay_ms)
@@ -45,6 +47,8 @@ void PaymentState::Okay()
 
     // Beep
     M5.Speaker.tone(2000, 50);
+
+    _json_serial.SendPaymentComplete();
 
     // 選択解除
     _goods.ResetSelectedAll();

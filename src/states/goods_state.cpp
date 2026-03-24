@@ -47,8 +47,8 @@ void GoodsState::Draw()
     _ui_label_set_property(ui_total_number_lbl_0, _UI_LABEL_PROPERTY_TEXT, total_number_str);
 
     // 合計
-    char total_price_str[6];
-    snprintf(total_price_str, sizeof(total_price_str), "%5d", _goods.GetSelectedTotalPrice());
+    char total_price_str[7];
+    snprintf(total_price_str, sizeof(total_price_str), "%5d", _goods.GetSelectedTotalPrice() + _amounts.GetCurrentValue());
     _ui_label_set_property(ui_total_price_lbl_0, _UI_LABEL_PROPERTY_TEXT, total_price_str);
 }
 
@@ -60,6 +60,7 @@ void GoodsState::Next()
     }
 
     Draw();
+    _json_serial.SendCurrentGood(_current_good);
 }
 
 void GoodsState::Prev()
@@ -70,30 +71,35 @@ void GoodsState::Prev()
     }
 
     Draw();
+    _json_serial.SendCurrentGood(_current_good);
 }
 
 void GoodsState::Plus()
 {
     _current_good->IncrementSelectedNumber();
     Draw();
+    _json_serial.SendCurrentGood(_current_good);
 }
 
 void GoodsState::Minus()
 {
     _current_good->DecrementSelectedNumber();
     Draw();
+    _json_serial.SendCurrentGood(_current_good);
 }
 
 void GoodsState::Reset()
 {
     _current_good->ResetSelectedNumber();
     Draw();
+    _json_serial.SendCurrentGood(_current_good);
 }
 
 void GoodsState::ResetAll()
 {
     _goods.ResetSelectedAll();
     Draw();
+    _json_serial.SendCurrentGood(_current_good);
 }
 
 void GoodsState::OnQRCodeScan(std::string& result)
