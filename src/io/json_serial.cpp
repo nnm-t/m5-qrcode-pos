@@ -34,5 +34,5 @@ void JsonSerial::SendPaymentComplete()
 
     json_payment["payment"] = "OK";
 
-    SendJson(json_payment)
+    SendJson(json_payment);
 }
