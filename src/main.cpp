@@ -58,6 +58,7 @@ void setup()
     auto m5_config = M5.config();
     M5.begin(m5_config);
     SD.begin(sd_cs_pin);
+    Serial0.begin(115200);
 
     brightness.Begin();
     json_io.Read();
